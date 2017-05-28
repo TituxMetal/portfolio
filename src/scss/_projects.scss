@@ -1,0 +1,225 @@
+.portfolio__projects {
+	
+	ul {
+		font-size: 1em;
+		
+		li {
+			display: block;
+			margin: 2em auto;
+			padding: 1em;
+			width: 100%;
+			
+			background-color: rgba($primaryDark, .8);
+			
+			.project {
+				margin: 0;
+				padding: 0;
+				width: 100%;
+				
+				.lead {
+					display: inline-block;
+					margin: 0;
+					padding: .5em;
+					width: auto;
+					
+					font-size: 1.5em;
+					line-height: 1.4;
+					
+					transition: all .2s ease-in-out;
+					
+					&:hover .underline::after {
+						width: 100%;
+						
+						transform: translateX(1)
+					}
+				}
+				
+				&__img {
+					display: none;
+				}
+				
+				&__link {
+					margin: 1em auto;
+					padding: 0;
+					width: 80%;
+					
+					font-size: 1.2em;
+					
+					ul {
+						display: block;
+						margin: 0;
+						padding: 0;
+						width: auto;
+						
+						list-style-type: none;
+						
+						li {
+							display: block;
+							margin: 0;
+							padding: 0;
+							width: auto;
+							
+							background-color: inherit;
+							transition: all .2s ease-in-out;
+							
+							.underline {
+								display: inline-block;
+								padding: .2em;
+								width: auto;
+								
+								font-weight: bold;
+								
+								color: $secondaryDark;
+								text-decoration: none;
+
+								.fa {
+									padding: .2em;
+									
+									font-size: 1.4em;
+									
+									color: $textColor;
+								}
+							}
+							
+							&:hover .underline::after {
+								margin-left: 23%;
+								width: 78%;
+								
+								background-color: $secondaryDark;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: $small) {
+	
+	article.portfolio__projects {
+		
+		ul {
+			
+			li {
+				
+				.project {
+					align-items: center;
+					display: flex;
+					flex-flow: row wrap;
+					justify-content: space-between;
+					margin: auto;
+					width: auto;
+					
+					&__description {
+						padding: 2rem 4rem;
+					}
+					
+					&__img {
+						display: block;
+						max-width: 20%;
+						margin: auto;
+						
+						img {
+							display: block;
+							margin: auto;
+							max-width: 100%;
+							
+							border-radius: 50%;
+						}
+					}
+					
+					h2.lead {
+						padding: 1rem 6rem;
+					}
+					
+					&__link {
+						max-width: 40%;
+						
+						ul {
+							align-items: center;
+							display: flex;
+							flex-flow: row wrap;
+							justify-content: flex-start;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: $medium) {
+	
+	article.portfolio__projects {
+		max-width: 100vw;
+		width: 100%;
+		
+		ul {
+			align-items: stretch;
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: space-between;
+			width: 100%;
+			
+			li {
+				width: 45vw;
+				
+				.project {
+					justify-content: center;
+					padding: 0;
+					
+					&__description {
+						padding: 2rem 0;
+					}
+					
+					&__img {
+						max-width: 25%;
+					}
+					
+					h2.lead {
+						padding: 1rem 0;
+					}
+					
+					&__link {
+						max-width: 60%;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: $large) {
+	
+	article.portfolio__projects {
+		max-width: 100vw;
+		width: 100%;
+		
+		ul {
+			align-items: stretch;
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: space-between;
+			width: 100%;
+			
+			li {
+				width: 45vw;
+				
+				.project {
+					
+					&__link {
+
+						ul {
+
+							li {
+								margin: auto 2rem;
+								width: auto;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

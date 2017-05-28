@@ -1,0 +1,47 @@
+// Colors
+
+$primaryColor: #1b1b1b;
+$primaryLight: #484848;
+$primaryDark: #333;
+
+$secondaryColor: #ff6d00;
+$secondaryLight: #ff9e40;
+$secondaryDark: #c43c00;
+
+$textColor: #fafafa;
+
+// Devices size
+// Converter px to em 	http://pxtoem.com/
+
+/**
+	xSmall devices like phone in portrait orientation
+	360px
+**/
+$xSmall: 22.5em;
+
+/**
+	small devices like phone in landscape orientation
+	640px
+**/
+$small: 40em;
+
+/**
+	medium devices like tablet in portrait orientation
+	800px
+**/
+$medium: 50em;
+
+/**
+	standard desktop devices
+	980px
+**/
+$desktop: 61.25em;
+
+/**
+	large devices like tablet in landscape orientation
+	1280px
+**/
+$large: 80em;
+
+// Default radius
+$radius: 3px;
