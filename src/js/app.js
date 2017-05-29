@@ -24,7 +24,6 @@ openMenu()
 const stickyMenu = function () {
 	window.addEventListener('scroll', function (e) {
 		const menu = document.querySelector('.navigation__menu--items')
-		console.log(window.scrollY)
 		if (window.scrollY >= (window.innerHeight - menu.clientHeight)) {
 			menu.parentElement.parentElement.classList.add('sticky')
 		} else {
