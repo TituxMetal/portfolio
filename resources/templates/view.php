@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<title>Guillaume LANG | Développeur / Intégrateur Web et Administrateur système Linux</title>
-	<link href="dist/css/app.min.css" rel="stylesheet">
+  <link href="/assets/css/app.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -62,7 +62,7 @@
 			<ul class="tech">
 				<li>
 					<figure>
-						<img src="dist/img/tech/html5_logo.png" alt="Html5"/>
+						<img src="/assets/img/tech/html5_logo.png" alt="Html5"/>
 						<figcaption>
 							Html5
 						</figcaption>
@@ -70,7 +70,7 @@
 				</li>
 				<li>
 					<figure>
-						<img src="dist/img/tech/css3_logo.png" alt="Css3"/>
+						<img src="/assets/img/tech/css3_logo.png" alt="Css3"/>
 						<figcaption>
 							Css3
 						</figcaption>
@@ -78,7 +78,7 @@
 				</li>
 				<li>
 					<figure>
-						<img src="dist/img/tech/javascript_logo.png" alt="Javascript"/>
+						<img src="/assets/img/tech/javascript_logo.png" alt="Javascript"/>
 						<figcaption>
 							Javascript
 						</figcaption>
@@ -86,7 +86,7 @@
 				</li>
 				<li>
 					<figure>
-						<img src="dist/img/tech/php_logo.png" alt="Php"/>
+						<img src="/assets/img/tech/php_logo.png" alt="Php"/>
 						<figcaption>
 							Php
 						</figcaption>
@@ -94,7 +94,7 @@
 				</li>
 				<li>
 					<figure>
-						<img src="dist/img/tech/mariadb_logo.png" alt="MariaDb"/>
+						<img src="/assets/img/tech/mariadb_logo.png" alt="MariaDb"/>
 						<figcaption>
 							MariaDb
 						</figcaption>
@@ -102,7 +102,7 @@
 				</li>
 				<li>
 					<figure>
-						<img src="dist/img/tech/sass_logo.png" alt="Sass"/>
+						<img src="/assets/img/tech/sass_logo.png" alt="Sass"/>
 						<figcaption>
 							Sass
 						</figcaption>
@@ -110,7 +110,7 @@
 				</li>
 				<li>
 					<figure>
-						<img src="dist/img/tech/atom_logo.png" alt="Atom"/>
+						<img src="/assets/img/tech/atom_logo.png" alt="Atom"/>
 						<figcaption>
 							Atom
 						</figcaption>
@@ -118,7 +118,7 @@
 				</li>
 				<li>
 					<figure>
-						<img src="dist/img/tech/git_logo.png" alt="Git"/>
+						<img src="/assets/img/tech/git_logo.png" alt="Git"/>
 						<figcaption>
 							Git
 						</figcaption>
@@ -126,7 +126,7 @@
 				</li>
 				<li>
 					<figure>
-						<img src="dist/img/tech/composer_logo.png" alt="Composer"/>
+						<img src="/assets/img/tech/composer_logo.png" alt="Composer"/>
 						<figcaption>
 							Composer
 						</figcaption>
@@ -134,7 +134,7 @@
 				</li>
 				<li>
 					<figure>
-						<img src="dist/img/tech/gulp_logo.png" alt="Gulp"/>
+						<img src="/assets/img/tech/gulp_logo.png" alt="Gulp"/>
 						<figcaption>
 							Gulp
 						</figcaption>
@@ -142,7 +142,7 @@
 				</li>
 				<li>
 					<figure>
-						<img src="dist/img/tech/docker_logo.png" alt="Docker"/>
+						<img src="/assets/img/tech/docker_logo.png" alt="Docker"/>
 						<figcaption>
 							Docker
 						</figcaption>
@@ -150,7 +150,7 @@
 				</li>
 				<li>
 					<figure>
-						<img src="dist/img/tech/ansible_logo.png" alt="Ansible"/>
+						<img src="/assets/img/tech/ansible_logo.png" alt="Ansible"/>
 						<figcaption>
 							Ansible
 						</figcaption>
@@ -158,7 +158,7 @@
 				</li>
 				<li>
 					<figure>
-						<img src="dist/img/tech/jquery_logo.png" alt="jQuery"/>
+						<img src="/assets/img/tech/jquery_logo.png" alt="jQuery"/>
 						<figcaption>
 							jQuery
 						</figcaption>
@@ -166,7 +166,7 @@
 				</li>
 				<li>
 					<figure>
-						<img src="dist/img/tech/bootstrap_logo.png" alt="Bootstrap"/>
+						<img src="/assets/img/tech/bootstrap_logo.png" alt="Bootstrap"/>
 						<figcaption>
 							Bootstrap
 						</figcaption>
@@ -174,7 +174,7 @@
 				</li>
 				<li>
 					<figure>
-						<img src="dist/img/tech/foundation_logo.png" alt="Foundation"/>
+						<img src="/assets/img/tech/foundation_logo.png" alt="Foundation"/>
 						<figcaption>
 							Foundation
 						</figcaption>
@@ -182,7 +182,7 @@
 				</li>
 				<li>
 					<figure>
-						<img src="dist/img/tech/laravel_logo.png" alt="Laravel"/>
+						<img src="/assets/img/tech/laravel_logo.png" alt="Laravel"/>
 						<figcaption>
 							Laravel
 						</figcaption>
@@ -190,7 +190,7 @@
 				</li>
 				<li>
 					<figure>
-						<img src="dist/img/tech/symfony_logo.png" alt="Symfony"/>
+						<img src="/assets/img/tech/symfony_logo.png" alt="Symfony"/>
 						<figcaption>
 							Symfony
 						</figcaption>
@@ -233,7 +233,7 @@
 							Refonte design du site du club de karaté d'Obernai. J'avais carte blanche pour créer le design, en gardant les couleurs principales du club et le logo. J'ai réalisé l'intégration Html, Css et Javascript dans la structure Php existante. J'ai choisi de réaliser le style en utilisant le préprocesseur Sass, sans aucun framework.
 						</p>
 						<figure class="project__img">
-							<img src="src/img/projects/projectsTenchido.jpg" alt="Site du Tenchido d'Orbernai">
+							<img src="/assets/img/projects/projectsTenchido.jpg" alt="Site du Tenchido d'Orbernai">
 						</figure>
 						<footer class="project__link">
 							<ul>
@@ -262,7 +262,7 @@
 							Une page de présentation pour la naissance du fils à un ami. Page réalisée en Html, Css et Javascript. J'ai réalisé le style en utilisant le préprocesseur Sass, sans aucun framework. J'ai réalisé le diaporama en Javascript ES6.
 						</p>
 						<figure class="project__img">
-							<img src="src/img/projects/projectsAlbin.jpg" alt="Application de prise de notes">
+							<img src="/assets/img/projects/projectsAlbin.jpg" alt="Application de prise de notes">
 						</figure>
 						<footer class="project__link">
 							<ul>
@@ -291,7 +291,7 @@
 							Petite application du jeu du Tic Tac Toe faite en javascript pendant ma formation à la 3WAcademy. J'ai récement fait quelques modifications au niveau du style et des couleurs.
 						</p>
 						<figure class="project__img">
-							<img src="src/img/projects/projectsTicTacToe.jpg" alt="Jeu du Tic Tac Toe">
+							<img src="/assets/img/projects/projectsTicTacToe.jpg" alt="Jeu du Tic Tac Toe">
 						</figure>
 						<footer class="project__link">
 							<ul>
@@ -320,7 +320,7 @@
 							Une application de prise de notes, réalisée en suivant une série de vidéos sur <a href="https://www.codecourse.com/lessons/vuex-notes-app" target="_blank" title="Créer une application de prise de note avec VueJs et Vuex">CodeCourse.com</a> qui montre comment utiliser VueJs et Vuex.
 						</p>
 						<figure class="project__img">
-							<img src="src/img/projects/porjectsNotesapp.jpg" alt="Application de prise de notes">
+							<img src="/assets/img/projects/porjectsNotesapp.jpg" alt="Application de prise de notes">
 						</figure>
 						<footer class="project__link">
 							<ul>
@@ -413,7 +413,7 @@
 		</section>
 	</footer>
 
-	<script src="dist/js/app.min.js"></script>
+  <script src="/assets/js/app.min.js"></script>
 </body>
 
 </html>

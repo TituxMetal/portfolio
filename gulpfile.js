@@ -11,52 +11,37 @@ var gulp        = require('gulp'),
     imagemin    = require('gulp-imagemin'),
     browserSync = require('browser-sync').create();
 
-// Static Server + watching scss/html files
-gulp.task('serve', ['sass', 'js'], function() {
-
-    browserSync.init({
-			server: './',
-			browser: "firefox"
-    });
-
-    gulp.watch('src/scss/**/*.scss', ['sass']);
-    gulp.watch('src/js/**/*.js', ['js']);
-    gulp.watch('./*.html').on('change', browserSync.reload);
-});
-
 // Configure CSS tasks.
 gulp.task('sass', function () {
-  return gulp.src('src/scss/**/*.scss')
+  return gulp.src('resources/assets/scss/**/*.scss')
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(prefix('last 2 versions'))
     .pipe(cssmin())
     .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest('dist/css'))
-    .pipe(browserSync.stream());
+    .pipe(gulp.dest('public/assets/css'));
 });
 
 // Configure JS.
 gulp.task('js', function() {
-  return gulp.src('src/js/**/*.js')
+  return gulp.src('resources/assets/js/**/*.js')
     .pipe(babel())
     .pipe(uglify())
     .pipe(concat('app.js'))
     .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest('dist/js'))
+    .pipe(gulp.dest('public/assets/js'))
     .pipe(browserSync.stream());
 });
 
 // Configure image stuff.
 gulp.task('images', function () {
-  return gulp.src('src/img/**/*.+(png|jpg|gif|svg)')
+  return gulp.src('resources/assets/img/**/*.+(png|jpg|gif|svg)')
     .pipe(imagemin())
-    .pipe(gulp.dest('dist/img'));
+    .pipe(gulp.dest('public/assets/img'));
 });
 
 gulp.task('watch', function () {
-  gulp.watch('src/scss/**/*.scss', ['sass']);
-  gulp.watch('src/js/**/*.js', ['js']);
-  gulp.watch('./*.html').on('change', browserSync.reload);
+  gulp.watch('resources/assets/scss/**/*.scss', ['sass']);
+  gulp.watch('resources/assets/js/**/*.js', ['js']);
 });
 
-gulp.task('default', ['sass', 'js', 'images', 'serve']);
+gulp.task('default', ['sass', 'js', 'images']);

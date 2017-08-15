@@ -82,7 +82,7 @@ a.underline {
 }
 
 .bg__profile {
-	background: $primaryColor url("../../dist/img/background/sectionProfileBackground.jpg") no-repeat center center fixed;
+	background: $primaryColor url("/assets/img/background/sectionProfileBackground.jpg") no-repeat center center fixed;
 	background-size: cover;
 	
 	&::after,
@@ -106,6 +106,6 @@ a.underline {
 }
 
 .bg__contact {
-	background: $primaryColor url("../../dist/img/background/sectionContactBackground.jpg") no-repeat center center fixed;
+	background: $primaryColor url("/assets/img/background/sectionContactBackground.jpg") no-repeat center center fixed;
 	background-size: cover;
 }
