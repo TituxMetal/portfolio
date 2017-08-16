@@ -5,6 +5,7 @@ require 'app/bootstrap.php';
 return [
   'paths' => [
     'migrations' => 'storage/migrations',
+    'seeds' => 'storage/seeds',
   ],
   'environments' => [
     'default_migration_table' => 'migrations',
