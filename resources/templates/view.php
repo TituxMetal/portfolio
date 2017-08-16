@@ -49,12 +49,9 @@
 		<article>
 			<h2  title="Les compétences de Guillaume LANG">Compétences</h2>
 			<ul class="knowledge">
-				<li>Développement back end</li>
-				<li>Intégration front end</li>
-				<li>Responsive web design</li>
-				<li>Optimisation seo</li>
-				<li>Gestion de versions du code source</li>
-				<li>Administration de serveurs Linux</li>
+        <?php foreach($knowledges as $knowledge): ?>
+          <li><?= $knowledge->title(); ?></li>
+        <?php endforeach; ?>
 			</ul>
 		</article>
 		<article>
