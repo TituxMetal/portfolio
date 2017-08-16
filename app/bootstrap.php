@@ -12,8 +12,10 @@ try {
 
 $config = require ROOT . '/app/config/config.php';
 
+Symfony\Component\Debug\ErrorHandler::register();
+Symfony\Component\Debug\ExceptionHandler::register();
+
 $app = new Silex\Application($config);
 
-$app->register(new Silex\Provider\DoctrineServiceProvider());
-
+require ROOT . '/app/services.php';
 require ROOT . '/app/routes.php';
