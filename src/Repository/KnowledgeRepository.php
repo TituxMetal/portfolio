@@ -3,41 +3,45 @@
 namespace Tuxi\Portfolio\Repository;
 
 use DateTime;
-use Doctrine\DBAL\Connection;
 use Tuxi\Portfolio\Entity\Knowledge;
 
-class KnowledgeRepository {
+/**
+ * Object allowing access to the data of knowledges entity.
+ *
+ * @author Titux Metal <tituxmetal@gmail.com>
+ */
+class KnowledgeRepository extends Repository {
   
   /**
-   * Database connection.
-   *
-   * @var Doctrine\DBAL\Connection
-   */
-  private $db;
-  
-  /**
-   * Constructor.
+   * Return a list of all knowledges, sorted by id.
    * 
-   * @param Doctrine\DBAL\Connection $db The database connection object.
+   * @return array A list of all knowledges.
    */
-  public function __construct(Connection $db) {
-    $this->db = $db;
-  }
-  
   public function findAll() {
-    $sql = 'SELECT id, title, created FROM knowledges ORDER BY id DESC';
-    $result = $this->db->fetchAll($sql);
+    $sql = "
+      SELECT id, title, created
+      FROM knowledges
+      ORDER BY id ASC
+    ";
+    $result = $this->getDb()->fetchAll($sql);
     
     $knowledges = [];
     foreach($result as $row) {
       $knowledgeId = $row['id'];
-      $knowledges[$knowledgeId] = $this->buildKnowledge($row);
+      $knowledges[$knowledgeId] = $this->buildDomainObject($row);
     }
     
     return $knowledges;
   }
   
-  private function buildKnowledge($row) {
+  /**
+   * Creates a Knowledge object based on a database row.
+   * 
+   * @param array $row The database row containing Knowledge data.
+   * @return Tuxi\Portfolio\Entity\Knowledge The Knowledge object based on
+   * the database row.
+   */
+  protected function buildDomainObject(array $row) {
     $knowledge = new Knowledge();
     $knowledge->setId($row['id']);
     $knowledge->setTitle($row['title']);
@@ -45,5 +49,5 @@ class KnowledgeRepository {
     
     return $knowledge;
   }
-  
+
 }
