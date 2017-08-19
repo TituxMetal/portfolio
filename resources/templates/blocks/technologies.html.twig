@@ -6,7 +6,7 @@
   {% for technology in technologies %}
     <li>
       <figure>
-        <img src="/assets/img/tech/html5_logo.png" alt="Html5"/>
+        <img src="{{ technology.image.src }}" alt="{{ technology.image.alt }}"/>
         <figcaption>
           {{ technology.title }}
         </figcaption>
