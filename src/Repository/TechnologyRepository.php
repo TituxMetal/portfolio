@@ -19,7 +19,7 @@ class TechnologyRepository extends Repository {
    */
   public function findAll() {
     $sql = "
-      SELECT id, title, created
+      SELECT id, title, image, created
       FROM technologies
       ORDER BY id ASC
     ";
@@ -45,6 +45,8 @@ class TechnologyRepository extends Repository {
     $technology = new Technology();
     $technology->setId($row['id']);
     $technology->setTitle($row['title']);
+    $image = new ImageRepository($this->getDb());
+    $technology->setImage($image->findById($row['image']));
     $technology->setCreated(new DateTime($row['created']));
     
     return $technology;
