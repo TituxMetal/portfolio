@@ -24,16 +24,23 @@ class Technology {
   private $title;
   
   /**
+   * Associated Image to the Technology.
+   *
+   * @var Titux\Portfolio\Entity\Image
+   */
+  private $image;
+  
+  /**
    * Technology created datetime.
    *
    * @var \DateTime
    */
   private $created;
-  
+
   /**
    * Get id of the technology.
    * 
-   * @return int Returns the id of the technology
+   * @return int Returns the id of the technology.
    */
   public function id(): int {
     
@@ -54,7 +61,7 @@ class Technology {
   /**
    * Get title of the technology.
    * 
-   * @return string Returns the title of the technology
+   * @return string Returns the title of the technology.
    */
   public function title(): string {
     
@@ -73,9 +80,32 @@ class Technology {
   }
   
   /**
+   * Get the Image object associated to the Technology.
+   * 
+   * @return \Tuxi\Portfolio\Entity\Image Returns the Image object associated to
+   * the Technology.
+   */
+  public function image(): Image {
+    
+    return $this->image;
+  }
+  
+  /**
+   * Set the Image object to associate with the Technology.
+   * 
+   * @param \Tuxi\Portfolio\Entity\Image $image The Image object to associate
+   * with the Technology.
+   */
+  public function setImage(Image $image) {
+    $this->image = $image;
+    
+    return $this;
+  }
+  
+  /**
    * Get the created datetime of the technology.
    * 
-   * @return \DateTime Returns the created datetime of the technology
+   * @return \DateTime Returns the created datetime of the technology.
    */
   public function created(): \DateTime {
     
