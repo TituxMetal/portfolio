@@ -2,8 +2,11 @@
 
 use Silex\Provider\DoctrineServiceProvider;
 use Silex\Provider\TwigServiceProvider;
-use Tuxi\Portfolio\Repository\KnowledgeRepository;
-use Tuxi\Portfolio\Repository\TechnologyRepository;
+use Tuxi\Portfolio\Repository\{
+  KnowledgeRepository,
+  TechnologyRepository,
+  ProjectRepository
+};
 
 /*
  * Add the Doctrine service provider for database connection.
@@ -31,4 +34,12 @@ $app['dao.knowledge'] = function($app) {
 $app['dao.technology'] = function($app) {
   
   return new TechnologyRepository($app['db']);
+};
+
+/*
+ * Add the Project repository.
+ */
+$app['dao.project'] = function($app) {
+  
+  return new ProjectRepository($app['db']);
 };
