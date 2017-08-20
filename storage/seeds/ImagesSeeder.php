@@ -91,6 +91,26 @@ class ImagesSeeder extends AbstractSeed {
         'src' => '/assets/img/tech/symfony_logo.png',
         'created' => date('Y-m-d H:i:s')
       ],
+      [
+        'alt' => "Site du Tenchido d'Orbernai",
+        'src' => '/assets/img/projects/projectsTenchido.jpg',
+        'created' => date('Y-m-d H:i:s')
+      ],
+      [
+        'alt' => 'Page de bienvenue du jeune Albin',
+        'src' => '/assets/img/projects/projectsAlbin.jpg',
+        'created' => date('Y-m-d H:i:s')
+      ],
+      [
+        'alt' => 'Jeu du Tic Tac Toe',
+        'src' => '/assets/img/projects/projectsTicTacToe.jpg',
+        'created' => date('Y-m-d H:i:s')
+      ],
+      [
+        'alt' => 'Application de prise de notes',
+        'src' => '/assets/img/projects/porjectsNotesapp.jpg',
+        'created' => date('Y-m-d H:i:s')
+      ],
     ];
 
     $technologies = $this->table('images');
