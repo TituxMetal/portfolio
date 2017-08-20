@@ -31,6 +31,13 @@ class Project {
   private $description;
   
   /**
+   * Associated Image to the Project.
+   *
+   * @var Titux\Portfolio\Entity\Image
+   */
+  private $image;
+  
+  /**
    * Project created datetime.
    *
    * @var \DateTime
@@ -96,6 +103,29 @@ class Project {
    */
   public function setDescription(string $description) {
     $this->description = $description;
+    
+    return $this;
+  }
+  
+  /**
+   * Get the Image object associated to the Project.
+   * 
+   * @return \Tuxi\Portfolio\Entity\Image Returns the Image object associated to
+   * the Project.
+   */
+  public function image(): Image {
+    
+    return $this->image;
+  }
+  
+  /**
+   * Set the Image object to associate with the Project.
+   * 
+   * @param \Tuxi\Portfolio\Entity\Image $image The Image object to associate
+   * with the Project.
+   */
+  public function setImage(Image $image) {
+    $this->image = $image;
     
     return $this;
   }

@@ -19,7 +19,7 @@ class ProjectRepository extends Repository {
    */
   public function findAll() {
     $sql = "
-      SELECT id, title, description, created
+      SELECT id, title, description, image, created
       FROM projects
       ORDER BY id ASC
     ";
@@ -46,7 +46,9 @@ class ProjectRepository extends Repository {
     $project->setId($row['id']);
     $project->setTitle($row['title']);
     $project->setDescription($row['description']);
-    $project->setCreated(new \DateTime($row['created']));
+    $image = new ImageRepository($this->getDb());
+    $project->setImage($image->findById($row['image']));
+    $project->setCreated(new DateTime($row['created']));
     
     return $project;
   }
