@@ -5,7 +5,7 @@
     <li>
       <article class="project">
         <h2 class="lead">
-          <a href="http://tenchido.fr" title="Karaté Tenchido Obernai" target="_blank" class="underline">{{ project.title }}</a>
+          <a href="{{ project.mainLink.href }}" title="{{ project.mainLink.title }}" target="_blank" class="underline">{{ project.name }}</a>
         </h2>
         <p class="project__description">
           {{ project.description }}
@@ -16,15 +16,15 @@
         <footer class="project__link">
           <ul>
             <li>
-              <a href="https://web.archive.org/web/20161028195201/http://www.tenchido.fr/" title="Karaté Tenchido Obernai avant la refonte" target="_blank" class="underline">
+              <a href="{{ project.mainLink.href }}" title="{{ project.mainLink.title }}" target="_blank" class="underline">
                 <i class="fa fa-globe" aria-hidden="true"></i>
-                Le projet avant
+                {{ project.mainLink.label }}
               </a>
             </li>
             <li>
-              <a href="http://tenchido.fr" title="Karaté Tenchido Obernai" target="_blank" class="underline">
-                <i class="fa fa-globe" aria-hidden="true"></i>
-                Le projet après
+              <a href="{{ project.sourcesLink.href }}" title="{{ project.sourcesLink.title }}" target="_blank" class="underline">
+                <i class="fa fa-github" aria-hidden="true"></i>
+                {{ project.sourcesLink.label }}
               </a>
             </li>
           </ul>
