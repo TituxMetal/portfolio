@@ -7,7 +7,7 @@ class CreateProjectsTable extends AbstractMigration {
   
   public function up() {
     $project = $this->table('projects');
-    $project->addColumn('title', 'string', ['limit' => 255])
+    $project->addColumn('name', 'string', ['limit' => 255])
       ->addColumn('description', 'text', ['limit' => MysqlAdapter::TEXT_LONG])
       ->addColumn('created', 'timestamp')
       ->save();
