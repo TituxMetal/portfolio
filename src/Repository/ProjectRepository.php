@@ -19,7 +19,7 @@ class ProjectRepository extends Repository {
    */
   public function findAll() {
     $sql = "
-      SELECT id, title, description, image, created
+      SELECT id, name, description, image, main_link, sources_link, created
       FROM projects
       ORDER BY id ASC
     ";
@@ -44,10 +44,15 @@ class ProjectRepository extends Repository {
   protected function buildDomainObject(array $row) {
     $project = new Project();
     $project->setId($row['id']);
-    $project->setTitle($row['title']);
+    $project->setName($row['name']);
     $project->setDescription($row['description']);
     $image = new ImageRepository($this->getDb());
     $project->setImage($image->findById($row['image']));
+    
+    $link = new LinkRepository($this->getDb());
+    $project->setMainLink($link->findById($row['main_link']));
+    $project->setSourcesLink($link->findById($row['sources_link']));
+    
     $project->setCreated(new DateTime($row['created']));
     
     return $project;

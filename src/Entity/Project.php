@@ -17,11 +17,11 @@ class Project {
   private $id;
   
   /**
-   * Project title.
+   * Project name.
    *
    * @var string
    */
-  private $title;
+  private $name;
   
   /**
    * Project description.
@@ -36,6 +36,20 @@ class Project {
    * @var Titux\Portfolio\Entity\Image
    */
   private $image;
+  
+  /**
+   * Associated main Link to the Project.
+   *
+   * @var Titux\Portfolio\Entity\Link
+   */
+  private $mainLink;
+  
+  /**
+   * Associated sources Link to the Project.
+   *
+   * @var Titux\Portfolio\Entity\Link
+   */
+  private $sourcesLink;
   
   /**
    * Project created datetime.
@@ -66,22 +80,22 @@ class Project {
   }
   
   /**
-   * Get title of the project.
+   * Get name of the project.
    * 
-   * @return string Returns the title of the project.
+   * @return string Returns the name of the project.
    */
-  public function title(): string {
+  public function name(): string {
     
-    return $this->title;
+    return $this->name;
   }
   
   /**
-   * Set the title of the project.
+   * Set the name of the project.
    * 
-   * @param string $title The title to set to the project.
+   * @param string $name The name to set to the project.
    */
-  public function setTitle(string $title) {
-    $this->title = $title;
+  public function setName(string $name) {
+    $this->name = $name;
     
     return $this;
   }
@@ -126,6 +140,52 @@ class Project {
    */
   public function setImage(Image $image) {
     $this->image = $image;
+    
+    return $this;
+  }
+  
+  /**
+   * Get the main Link object associated to the Project.
+   * 
+   * @return \Tuxi\Portfolio\Entity\Link Returns the main Link object associated to
+   * the Project.
+   */
+  public function mainLink(): Link {
+    
+    return $this->mainLink;
+  }
+  
+  /**
+   * Set the main Link object to associate with the Project.
+   * 
+   * @param \Tuxi\Portfolio\Entity\Link $mainLink The main Link object to associate
+   * with the Project.
+   */
+  public function setMainLink(Link $mainLink) {
+    $this->mainLink = $mainLink;
+    
+    return $this;
+  }
+  
+  /**
+   * Get the sources Link object associated to the Project.
+   * 
+   * @return \Tuxi\Portfolio\Entity\Link Returns the sources Link object associated to
+   * the Project.
+   */
+  public function sourcesLink(): Link {
+    
+    return $this->sourcesLink;
+  }
+  
+  /**
+   * Set the sources Link object to associate with the Project.
+   * 
+   * @param \Tuxi\Portfolio\Entity\Link $sourcesLink The sources Link object to associate
+   * with the Project.
+   */
+  public function setSourcesLink(Link $sourcesLink) {
+    $this->sourcesLink = $sourcesLink;
     
     return $this;
   }
