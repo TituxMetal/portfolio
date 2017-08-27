@@ -1,0 +1,3 @@
+{% for error in app.session.get('errors') %}
+  <p class="contact__form--errors">{{ error }}</p>
+{% endfor %}
