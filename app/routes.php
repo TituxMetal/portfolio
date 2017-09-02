@@ -15,12 +15,11 @@ $app->get('/', function() use($app) {
 });
 
 $app->post('/contact', function(Request $request) use($app) {
-  $app['session']->clear();
   $contactRepository = $app['dao.contact'];
   $contact = $contactRepository->validate($request->request->all());
   
   if($contactRepository->hasErrors()) {
-    $app['session']->set('errors', $contactRepository->errors());
+    $app['session']->getFlashBag()->add('errors', $contactRepository->errors());
     
     return $app->redirect('/#contact');
   }
