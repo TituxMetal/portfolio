@@ -1,3 +1,5 @@
-{% for error in app.session.get('errors') %}
-  <p class="contact__form--errors">{{ error }}</p>
+{% for data in app.session.flashbag.get('errors') %}
+  {% for error in data %}
+    <p class="contact__form--errors">{{ error }}</p>
+  {% endfor %}
 {% endfor %}
