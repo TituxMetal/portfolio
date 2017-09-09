@@ -113,8 +113,8 @@ class ImagesSeeder extends AbstractSeed {
       ],
     ];
 
-    $technologies = $this->table('images');
-    $technologies->insert($data)->save();
+    $images = $this->table('images');
+    $images->insert($data)->save();
   }
     
 }

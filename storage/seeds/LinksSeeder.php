@@ -31,7 +31,7 @@ class LinksSeeder extends AbstractSeed {
         'created' => date('Y-m-d H:i:s')
       ],
       [
-        'href' => "http://tictactoe.lg-ed.com",
+        'href' => "http://tuxtactoe.ovh",
         'label' => "Voir le projet",
         'title' => "Jeu du Tic Tac Toe",
         'created' => date('Y-m-d H:i:s')
@@ -39,11 +39,11 @@ class LinksSeeder extends AbstractSeed {
       [
         'href' => "https://github.com/TituxMetal/ticTacToe",
         'label' => "Voir les sources",
-        'title' => "Code source de la page de bienvenue du jeune Albin",
+        'title' => "Code source du jeu du Tic Tac Toe",
         'created' => date('Y-m-d H:i:s')
       ],
       [
-        'href' => "http://notes.lg-ed.com",
+        'href' => "http://notes.tuxlab.fr",
         'label' => "Voir le projet",
         'title' => "App de prise de notes",
         'created' => date('Y-m-d H:i:s')
@@ -51,7 +51,7 @@ class LinksSeeder extends AbstractSeed {
       [
         'href' => "https://github.com/TituxMetal/vuejsNotes",
         'label' => "Voir les sources",
-        'title' => "Code source de l'pplication de prise de notes",
+        'title' => "Code source de l'application de prise de notes",
         'created' => date('Y-m-d H:i:s')
       ],
     ];
