@@ -29,7 +29,7 @@ $app->post('/contact', function(Request $request) use($app) {
     ->send(new Tuxi\Portfolio\Mail\ContactMessage($contact));
   
   if($contactRepository->insert($contact)) {
-    $app['session']->getFlashBag()->add('success', "Votre message à bien été envoyé, merci !");
+    $app['session']->getFlashBag()->add('success', "Votre message a bien été envoyé, merci !");
     
     return $app->redirect('/#contact');
   }
