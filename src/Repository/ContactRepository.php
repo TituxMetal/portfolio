@@ -33,8 +33,10 @@ class ContactRepository extends Repository {
   /**
    * Insert Contact object data in database.
    * 
+   * Returns the Contact object if it has been correctly inserted, or false.
+   * 
    * @param Contact $contact The Contact to insert in database.
-   * @return boolean|Contact Returns the Contact object if it has been correctly inserted, or false.
+   * @return boolean|Contact The Contact object or false. if errors
    */
   public function insert(Contact $contact) {
     $contactData = [
@@ -84,31 +86,48 @@ class ContactRepository extends Repository {
   /**
    * Validate all fields comming from the user.
    * 
+   * - Check if fields are in the required fields array and is not empty values
+   * - Check if the email field is valid and not empty value
+   * - Check if all the fields has at least five characters
+   * 
+   * If it is not errors, build the Contact object with the validated data or
+   * returns the errors array
+   * 
    * @param array $fields The fields to validate.
    * @return Contact|array Returns the Contact object, or validation errors. 
    */
   public function validate(array $fields) {
     
     foreach($fields as $field => $value) {
-      // Check if all fields are in the required fields array and it's not empty values
+      
       if(!array_key_exists($field, $this->requiredFields) || empty($value)) {
-        $this->addError($field, "Le champ {$this->requiredFields[$field]} est requis.");
+        $this->addError(
+          $field,
+          "Le champ {$this->requiredFields[$field]} est requis."
+        );
       }
-      // Check if the email field is a valid email and not empty value
-      if($field === 'contactEmail' && !$this->isValidEmail($value) && !empty($value)) {
+      
+      if(
+        $field === 'contactEmail'
+        && !$this->isValidEmail($value)
+        && !empty($value)
+      ) {
         $this->addError($field, "Le champ email doit contenir un email valide.");
       }
-      // Check if all the fields has at least five characters
+      
       if(strlen($value) > 0 && strlen($value) < 5) {
-        $this->addError($field, "Le champ {$this->requiredFields[$field]} doit contenir au moins 5 caractères.");
+        $this->addError(
+          $field,
+          "Le champ {$this->requiredFields[$field]} doit contenir au moins 5 caractères."
+        );
       }
     }
-    // If it is not errors we build the Contact object with the validated data
+    
     if($this->isValid()) {
       
       return $this->buildDomainObject($fields);
     }
-    // or we returns the errors array
+    
     return $this->errors();
   }
   

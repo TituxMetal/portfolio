@@ -2,6 +2,9 @@
 
 use Phinx\Seed\AbstractSeed;
 
+/**
+ * Clean all the data in the database to avoid duplicate data.
+ */
 class Clean extends AbstractSeed {
     
   public function run() {

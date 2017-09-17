@@ -6,7 +6,7 @@ use Tuxi\Portfolio\Entity\Contact;
 use Tuxi\Portfolio\Mail\Mailer\Mailable;
 
 /**
- * Description of ContactMessage
+ * Build a contact message to send.
  *
  * @author Titux Metal <tituxmetal@gmail.com>
  */
@@ -30,7 +30,6 @@ class ContactMessage extends Mailable {
   /**
    * Build the contact message to send.
    * 
-   * @return $this.
    */
   public function build() {
     

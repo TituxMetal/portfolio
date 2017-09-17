@@ -92,7 +92,7 @@ class Image {
   /**
    * Set the src attribute of the image.
    * 
-   * @param string $src The src attribute  to set to the image.
+   * @param string $src The src attribute to set to the image.
    */
   public function setSrc(string $src) {
     $this->src = $src;
@@ -113,7 +113,7 @@ class Image {
   /**
    * Set the created datetime of the image.
    * 
-   * @param \DateTime $datetime The created datetime  to set to the image.
+   * @param \DateTime $datetime The created datetime to set to the image.
    */
   public function setCreated(\DateTime $datetime) {
     $this->created = $datetime;

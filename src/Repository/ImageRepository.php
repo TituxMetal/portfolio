@@ -5,7 +5,7 @@ namespace Tuxi\Portfolio\Repository;
 use Tuxi\Portfolio\Entity\Image;
 
 /**
- * Object alloweing access to the data of images entity.
+ * Object allowing access to the data of images entity.
  *
  * @author Titux Metal <tituxmetal@gmail.com>
  */

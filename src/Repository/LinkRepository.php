@@ -5,7 +5,7 @@ namespace Tuxi\Portfolio\Repository;
 use Tuxi\Portfolio\Entity\Link;
 
 /**
- * Object alloweing access to the data of link entity.
+ * Object allowing access to the data of link entity.
  *
  * @author Titux Metal <tituxmetal@gmail.com>
  */

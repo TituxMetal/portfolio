@@ -72,11 +72,12 @@ class Mailer {
   }
   
   /**
+   * Send a message
    * 
    * @param Tuxi\Portfolio\Mail\Mailer\MailableInterface $view
    * @param array $viewData
    * @param \Callable|null $callback
-   * @return type
+   * @return Tuxi\Portfolio\Mail\Mailer\Mailable|Swift_Mailer
    */
   public function send($view, $viewData = [], Callable $callback = null) {
     if($view instanceof MailableInterface) {

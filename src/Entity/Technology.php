@@ -59,7 +59,7 @@ class Technology {
   }
   
   /**
-   * Get title of the technology.
+   * Get the title of the technology.
    * 
    * @return string Returns the title of the technology.
    */
@@ -82,8 +82,8 @@ class Technology {
   /**
    * Get the Image object associated to the Technology.
    * 
-   * @return \Tuxi\Portfolio\Entity\Image Returns the Image object associated to
-   * the Technology.
+   * @return \Tuxi\Portfolio\Entity\Image Returns the Image object associated
+   * to the Technology.
    */
   public function image(): Image {
     

@@ -34,7 +34,6 @@ class PendingMailable {
    * 
    * @param string $address The address to set.
    * @param string|null $name The name to set, if any.
-   * @return $this.
    */
   public function from($address, $name = null) {
     $this->from = compact('address', 'name');

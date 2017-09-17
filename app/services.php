@@ -21,8 +21,14 @@ $app->register(new TwigServiceProvider(), [
   'twig.path' => dirname(__DIR__) . '/resources/templates'
 ]);
 
+/**
+ * Add the Silex service provider
+ */
 $app->register(new Silex\Provider\SessionServiceProvider());
 
+/**
+ * Load the mailer class
+ */
 $app['mailer'] = function($app) {
   $config = $app['mail'];
   

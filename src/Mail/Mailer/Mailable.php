@@ -42,13 +42,14 @@ abstract class Mailable implements MailableInterface {
   protected $viewData = [];
 
   /**
+   * Sends a message.
    * 
    * @param Tuxi\Portfolio\Mail\Mailer\Mailer $mailer
    */
   public function send(Mailer $mailer) {
     $this->build();
     
-    $mailer->send($this->view, $this->viewData, function($message) {
+    $mailer->send($this->view, $this->viewData, function(MessageBuilder $message) {
       $message->from($this->from['address'], $this->from['name'])
         ->subject($this->subject);
       

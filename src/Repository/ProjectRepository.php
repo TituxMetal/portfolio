@@ -46,6 +46,7 @@ class ProjectRepository extends Repository {
     $project->setId($row['id']);
     $project->setName($row['name']);
     $project->setDescription($row['description']);
+    
     $image = new ImageRepository($this->getDb());
     $project->setImage($image->findById($row['image']));
     

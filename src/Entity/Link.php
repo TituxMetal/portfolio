@@ -99,7 +99,7 @@ class Link {
   /**
    * Set the label of the link.
    * 
-   * @param string $href The label to set to the link.
+   * @param string $label The label to set to the link.
    */
   public function setLabel(string $label) {
     $this->label = $label;

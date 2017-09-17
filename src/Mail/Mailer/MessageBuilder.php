@@ -29,7 +29,7 @@ class MessageBuilder {
    * Set the to addresses of this message.
    * 
    * @param string $address The address for to
-   * @param string|null $name
+   * @param string|null $name The name for to, if any.
    */
   public function to($address, $name = null) {
     $this->swiftMessage->setTo($address, $name);
@@ -40,9 +40,7 @@ class MessageBuilder {
   /**
    * Set the subject of this message.
    * 
-   * @param string $subject
-   * 
-   * @return $this
+   * @param string $subject The subject of the message.
    */
   public function subject($subject) {
     $this->swiftMessage->setSubject($subject);
@@ -54,7 +52,6 @@ class MessageBuilder {
    * Set the body of this message.
    * 
    * @param string $body The body of the message.
-   * @return $this.
    */
   public function body($body) {
     $this->swiftMessage->setBody($body, 'text/html');
@@ -67,7 +64,6 @@ class MessageBuilder {
    * 
    * @param string $address The address to set.
    * @param string|null $name The name to set, if any.
-   * @return $this.
    */
   public function from($address, $name = null) {
     $this->swiftMessage->setFrom($address, $name);
