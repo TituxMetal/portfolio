@@ -43,42 +43,42 @@ class TechnologiesSeeder extends AbstractSeed {
       ],
       [
         'title' => 'Git',
-        'image' => 7,
-        'created' => date('Y-m-d H:i:s')
-      ],
-      [
-        'title' => 'Composer',
         'image' => 8,
         'created' => date('Y-m-d H:i:s')
       ],
       [
-        'title' => 'Gulp',
+        'title' => 'Composer',
         'image' => 9,
         'created' => date('Y-m-d H:i:s')
       ],
       [
-        'title' => 'Docker',
+        'title' => 'Gulp',
         'image' => 10,
         'created' => date('Y-m-d H:i:s')
       ],
       [
-        'title' => 'Ansible',
+        'title' => 'Docker',
         'image' => 11,
         'created' => date('Y-m-d H:i:s')
       ],
       [
-        'title' => 'JQuery',
+        'title' => 'Ansible',
         'image' => 12,
         'created' => date('Y-m-d H:i:s')
       ],
       [
-        'title' => 'Bootstrap',
+        'title' => 'JQuery',
         'image' => 13,
         'created' => date('Y-m-d H:i:s')
       ],
       [
-        'title' => 'Foundation',
+        'title' => 'Bootstrap',
         'image' => 14,
+        'created' => date('Y-m-d H:i:s')
+      ],
+      [
+        'title' => 'Foundation',
+        'image' => 15,
         'created' => date('Y-m-d H:i:s')
       ],
       [
