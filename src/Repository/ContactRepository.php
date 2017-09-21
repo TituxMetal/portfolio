@@ -40,13 +40,19 @@ class ContactRepository extends Repository {
    */
   public function insert(Contact $contact) {
     $contactData = [
-      'name' => $contact->name(),
-      'email' => $contact->email(),
-      'subject' => $contact->subject(),
-      'message' => $contact->message()
+      'name' => htmlspecialchars($contact->name()),
+      'email' => htmlspecialchars($contact->email()),
+      'subject' => htmlspecialchars($contact->subject()),
+      'message' => htmlspecialchars($contact->message())
     ];
     
-    $statement = $this->getDb()->insert('contacts', $contactData);
+    $statement = $this->getDb()->prepare(
+      "INSERT INTO contacts
+      (name, email, subject, message)
+      VALUES(:name, :email, :subject, :message)"
+    );
+    $statement->execute($contactData);
+    
     if($statement) {
       $id = $this->getDb()->lastInsertId();
       $contact->setId($id);
