@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+
+  <head>
+    
+    <title>Guillaume LANG | Développeur/Intégrateur Web et Administrateur système Linux</title>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="Guillaume LANG Développeur/Intégrateur Web et Administrateur système Linux vous propose ses services dans la création de votre site Web responsive, optimisé pour le Seo.">
+		<meta name="author" content="Guillaume LANG">
+    <meta property="og:locale" content="fr_FR">
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="Développeur / Intégrateur Web et Administrateur système Linux">
+		<meta property="og:url" content="https://portfolio3wa.tuxlab.fr">
+		<meta property="og:site_name" content="https://portfolio3wa.tuxlab.fr">
+		<meta property="og:image" content="https://portfolio3wa.tuxlab.fr/assets/img/favicon.png">
+    
+		<link rel="canonical" href="https://portfolio3wa.tuxlab.fr">
+		<link rel="shortcut icon" type="image/x-icon" href="https://portfolio3wa.tuxlab.fr/assets/img/favicon.png">
+		<link rel="icon" type="image/x-icon" href="https://portfolio3wa.tuxlab.fr/assets/img/favicon.png">
+		<link rel="apple-touch-icon" href="https://portfolio3wa.tuxlab.fr/assets/img/favicon.png">
+    <link rel="stylesheet" href="/assets/css/app.min.css">
+    
+  </head>
+
+  <body>
+
+    {% include '_partials/header.html.twig' %}
+
+    {% include '_partials/navigation.html.twig' %}
+
+    <section class="box__wrap skills" id="skills">
+
+      {% include 'blocks/knowledges.html.twig' %}
+
+      {% include 'blocks/technologies.html.twig' %}
+
+    </section>
+
+    <section class="bg__profile profile" id="profile">
+
+      {% include 'blocks/profile.html.twig' %}
+
+    </section>
+
+    <section class="box__wrap projects" id="projects">
+
+      {% include 'blocks/projects.html.twig' %}
+
+    </section>
+
+    <section class="bg__contact contact" id="contact">
+
+      {% include 'blocks/contact.html.twig' %}
+
+    </section>
+
+    {% include '_partials/footer.html.twig' %}
+
+    <script src="/assets/js/app.min.js"></script>
+  </body>
+
+</html>

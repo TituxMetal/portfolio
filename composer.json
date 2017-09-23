@@ -1,0 +1,30 @@
+{
+  "name": "tuximetal/portfolio",
+  "description": "Projet de validation de la formation Developpeur/Intégrateur Web Junior de la 3WAcademy.",
+  "homepage": "https://lang-guillaume.com",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Tuxi Metal",
+      "email": "tuximetal@gmail.com"
+    }
+  ],
+  "require": {
+    "doctrine/dbal": "^2.5",
+    "robmorgan/phinx": "^0.7.2",
+    "silex/silex": "^2.0",
+    "twig/twig": "^2.0",
+    "symfony/twig-bridge": "^3.3",
+    "swiftmailer/swiftmailer": "^6.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.0",
+    "symfony/var-dumper": "^3.0",
+    "vlucas/phpdotenv": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Tuxi\\Portfolio\\": "src"
+    }
+  }
+}

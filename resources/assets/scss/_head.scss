@@ -1,0 +1,59 @@
+header.home__header {
+	align-items: center;
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	margin: auto;
+	padding: 0;
+	
+	background: transparent url("/assets/img/background/sectionHeaderBackground.jpg") no-repeat center center fixed;
+	background-size: cover;
+	
+	.header__hook {
+		align-items: center;
+		display: flex;
+		flex-flow: row wrap;
+		height: auto;
+		width: 100vw;
+		
+		z-index: 1;
+		
+		h1,
+		p {
+			width: 100%;
+			
+			font-weight: 900;
+			text-align: center;
+		}
+
+		h1 {
+			font-family: 'Courgette', cursive;
+			font-size: 3.5rem;
+			
+			color: $secondaryColor;
+		}
+		
+		p {
+			padding: 1rem 0;
+			
+			font-size: 2.2rem;
+		}
+	}
+}
+
+@media screen and (min-width: $small) and (min-height: $small) {
+	
+	header.home__header {
+		
+		.header__hook {
+
+			h1 {
+				font-size: 5rem;
+			}
+			
+			p {
+				font-size: 3rem;
+			}
+		}
+	}
+}

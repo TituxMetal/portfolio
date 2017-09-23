@@ -1,0 +1,5 @@
+{% for message in app.session.flashbag.get('success') %}
+  <p class="contact__form--success">
+    {{ message }}
+  </p>
+{% endfor %}
