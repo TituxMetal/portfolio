@@ -1,4 +1,6 @@
-// Colors
+/**
+  Colors
+**/
 
 $primaryColor: #1b1b1b;
 $primaryLight: #484848;
@@ -10,38 +12,36 @@ $secondaryDark: #c43c00;
 
 $textColor: #fafafa;
 
-// Devices size
-// Converter px to em 	http://pxtoem.com/
+/**
+  @link http://pxtoem.com/ Convert px to em
+**/
 
 /**
-	xSmall devices like phone in portrait orientation
-	360px
+	xSmall devices like phone in portrait orientation 360px
 **/
 $xSmall: 22.5em;
 
 /**
-	small devices like phone in landscape orientation
-	640px
+	small devices like phone in landscape orientation 640px
 **/
 $small: 40em;
 
 /**
-	medium devices like tablet in portrait orientation
-	800px
+	medium devices like tablet in portrait orientation 800px
 **/
 $medium: 50em;
 
 /**
-	standard desktop devices
-	980px
+	standard desktop devices 980px
 **/
 $desktop: 61.25em;
 
 /**
-	large devices like tablet in landscape orientation
-	1280px
+	large devices like tablet in landscape orientation 1280px
 **/
 $large: 80em;
 
-// Default radius
+/**
+  Default radius
+**/
 $radius: 3px;
