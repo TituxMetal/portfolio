@@ -26,39 +26,9 @@
 
   <body>
 
-    {% include '_partials/header.html.twig' %}
-
-    {% include '_partials/navigation.html.twig' %}
-
-    <section class="box__wrap skills" id="skills">
-
-      {% include 'blocks/knowledges.html.twig' %}
-
-      {% include 'blocks/technologies.html.twig' %}
-
-    </section>
-
-    <section class="bg__profile profile" id="profile">
-
-      {% include 'blocks/profile.html.twig' %}
-
-    </section>
-
-    <section class="box__wrap projects" id="projects">
-
-      {% include 'blocks/projects.html.twig' %}
-
-    </section>
-
-    <section class="bg__contact contact" id="contact">
-
-      {% include 'blocks/contact.html.twig' %}
-
-    </section>
-
-    {% include '_partials/footer.html.twig' %}
-
-    <script src="/assets/js/app.min.js"></script>
+    {% block content %}{% endblock %}
+    
+    {#<script src="/assets/js/app.min.js"></script>#}
   </body>
 
 </html>
