@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/5.4/phpunit.xsd"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/6.3/phpunit.xsd"
          bootstrap="vendor/autoload.php"
          backupGlobals="false"
          beStrictAboutCoversAnnotation="false"
@@ -13,9 +13,8 @@
     </testsuite>
 
     <filter>
-    <whitelist addUncoveredFilesFromWhitelist="true">
-      <directory suffix=".php">app</directory>
-      <directory suffix=".php">public</directory>
-    </whitelist>
-  </filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src</directory>
+        </whitelist>
+    </filter>
 </phpunit>
