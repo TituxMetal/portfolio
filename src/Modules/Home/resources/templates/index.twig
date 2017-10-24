@@ -1,0 +1,44 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+  
+  Hello all the worlds
+  
+  
+  
+  {#
+  
+    {% include 'partials/header.twig' %}
+
+    {% include 'partials/navigation.twig' %}
+
+  <section class="box__wrap skills" id="skills">
+
+    {% include 'blocks/knowledges.html.twig' %}
+
+    {% include 'blocks/technologies.html.twig' %}
+
+  </section>
+
+  <section class="bg__profile profile" id="profile">
+
+    {% include 'blocks/profile.html.twig' %}
+
+  </section>
+
+  <section class="box__wrap projects" id="projects">
+
+    {% include 'blocks/projects.html.twig' %}
+
+  </section>
+
+  <section class="bg__contact contact" id="contact">
+  
+    {% include 'blocks/contact.html.twig' %}
+
+  </section>
+
+  {% include 'partials/footer.twig' %}
+  
+  #}  
+{% endblock %}

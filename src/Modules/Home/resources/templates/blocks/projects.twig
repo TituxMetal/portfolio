@@ -1,0 +1,36 @@
+<article class="portfolio__projects">
+  <h2 title="Les projets réalisés par Guillaume LANG">Projets réalisés</h2>
+  <ul>
+  {% for project in projects %}
+    <li>
+      <article class="project">
+        <h2 class="lead">
+          <a href="{{ project.mainLink.href }}" title="{{ project.mainLink.title }}" target="_blank" class="underline">{{ project.name }}</a>
+        </h2>
+        <p class="project__description">
+          {{ project.description }}
+        </p>
+        <figure class="project__img">
+          <img src="{{ project.image.src }}" alt="{{ project.image.alt }}">
+        </figure>
+        <footer class="project__link">
+          <ul>
+            <li>
+              <a href="{{ project.mainLink.href }}" title="{{ project.mainLink.title }}" target="_blank" class="underline">
+                <i class="fa fa-globe" aria-hidden="true"></i>
+                {{ project.mainLink.label }}
+              </a>
+            </li>
+            <li>
+              <a href="{{ project.sourcesLink.href }}" title="{{ project.sourcesLink.title }}" target="_blank" class="underline">
+                <i class="fa fa-github" aria-hidden="true"></i>
+                {{ project.sourcesLink.label }}
+              </a>
+            </li>
+          </ul>
+        </footer>
+      </article>
+    </li>
+  {% endfor %}
+  </ul>
+</article>
