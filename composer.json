@@ -11,11 +11,12 @@
   ],
   "require": {
     "guzzlehttp/psr7": "^1.4",
+    "http-interop/http-middleware": "^0.4.1",
     "http-interop/response-sender": "^1.0",
-    "zendframework/zend-expressive-fastroute": "^2.0",
+    "pagerfanta/pagerfanta": "^1.0",
     "php-di/php-di": "^5.4",
     "twig/twig": "^2.0",
-    "http-interop/http-middleware": "^0.4.1"
+    "zendframework/zend-expressive-fastroute": "^2.0"
   },
   "require-dev": {
     "fzaninotto/faker": "^1.7",

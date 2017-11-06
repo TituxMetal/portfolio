@@ -51,5 +51,5 @@ migrate: ## Migrate all migrations
 seeder: ## Create a seeder, use with a name as argument
 	php vendor/bin/phinx seed:create $(filter-out $@,$(MAKECMDGOALS))
 
-seed: ## Run all seeders
+seed: migrate ## Run all seeders
 	php vendor/bin/phinx seed:run
