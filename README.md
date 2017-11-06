@@ -1,3 +1,5 @@
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/81e71dbf-2503-4e40-8522-cddc97f4f04e/big.png)](https://insight.sensiolabs.com/projects/81e71dbf-2503-4e40-8522-cddc97f4f04e)
+
 # Portfolio
 
 Ce projet est une synthèse de ce que j'ai appris lors de ma formation de Développeur/Intégrateur Web Junior à la 3WAcademy de Strasbourg et de mon évolution après cette formation.
