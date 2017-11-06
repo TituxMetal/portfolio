@@ -1,0 +1,28 @@
+{% extends "@admin/layout.twig" %}
+
+{% block title "Éditer une connaissance" %}
+
+{% block content %}
+  
+  <h1>
+    Éditer une connaissance
+  </h1>
+  
+  <section>
+    <p>
+      <a href="{{ path(routePrefix ~ '.index') }}">
+        Retour
+      </a>
+    </p>
+    
+    <form action="{{ path(routePrefix ~ '.edit', {id: item.id}) }}" method="post">
+      {% include viewPath ~ '/form.twig' %}
+      <div>
+        <button type="submit">
+          Éditer
+        </button>
+      </div>
+    </form>
+  </section>
+
+{% endblock %}
