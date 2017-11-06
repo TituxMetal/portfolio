@@ -52,7 +52,7 @@ class App implements DelegateInterface {
   
   /**
    * Add a module to the app
-   * 
+   *
    * @param string $module
    * @return \Portfolio\Core\App
    */
@@ -64,7 +64,7 @@ class App implements DelegateInterface {
   
   /**
    * Add a middleware to the app
-   * 
+   *
    * @param string|null $middleware
    * @return \Portfolio\Core\App
    */
@@ -85,26 +85,24 @@ class App implements DelegateInterface {
     }
       
     if (is_callable($middleware)) {
-
       return call_user_func_array($middleware, [$request, [$this, 'process']]);
     }
 
     if ($middleware instanceof MiddlewareInterface) {
-
       return $middleware->process($request, $this);
     }
   }
   
   public function run(ServerRequestInterface $request): ResponseInterface {
     
-    foreach ($this->modules as $module) {
+    foreach ($this->getModules() as $module) {
       $this->getContainer()->get($module);
     }
     
     return $this->process($request);
   }
   
-  public function getModule(): array {
+  public function getModules(): array {
     
     return $this->modules;
   }
@@ -112,7 +110,6 @@ class App implements DelegateInterface {
   public function getContainer(): ContainerInterface {
     
     if (is_null($this->container)) {
-      
       return $this->buildContainer();
     }
     
@@ -125,7 +122,6 @@ class App implements DelegateInterface {
   private function getMiddleware() {
     
     if (array_key_exists($this->index, $this->middlewares)) {
-      
       if (is_string($this->middlewares[$this->index])) {
         $middleware = $this->container->get($this->middlewares[$this->index]);
       } else {
@@ -158,5 +154,4 @@ class App implements DelegateInterface {
 
     return $this->container;
   }
-  
 }

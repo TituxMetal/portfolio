@@ -28,7 +28,7 @@ class AppTest extends TestCase {
   public function testApp() {
     $this->app->addModule(get_class($this));
     
-    $this->assertEquals([get_class($this)], $this->app->getModule());
+    $this->assertEquals([get_class($this)], $this->app->getModules());
   }
   
   public function testAppWithArrayDefinition() {
@@ -69,5 +69,4 @@ class AppTest extends TestCase {
     
     $this->app->run($this->getMockBuilder(ServerRequestInterface::class)->getMock());
   }
-  
 }
