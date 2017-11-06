@@ -1,5 +1,5 @@
 <?php
 
 return [
-  'routePrefix' => '/',
+  'home.prefix' => '/home',
 ];

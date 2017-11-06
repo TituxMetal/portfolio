@@ -16,10 +16,10 @@ class HomeModule extends Module {
   const DEFINITIONS = __DIR__ . '/config.php';
 
   public function __construct(ContainerInterface $container) {
-    $homePrefix = $container->get('routePrefix');
+    $homePrefix = $container->get('home.prefix');
     $container->get(RendererInterface::class)->addPath('home', __DIR__ . '/resources/templates');
     
     $router = $container->get(Router::class);
-    $router->get($homePrefix, HomeAction::class, 'portfolio/home');
+    $router->get($homePrefix, HomeAction::class, 'portfolio.home');
   }
 }
