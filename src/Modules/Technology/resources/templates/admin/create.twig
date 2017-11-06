@@ -1,0 +1,28 @@
+{% extends "@admin/layout.twig" %}
+
+{% block title "Créer une technologie" %}
+
+{% block content %}
+  
+  <h1>
+    Créer une technologie
+  </h1>
+  
+  <section>
+    <p>
+      <a href="{{ path(routePrefix ~ '.index') }}">
+        Retour
+      </a>
+    </p>
+    
+    <form action="{{ path(routePrefix ~ '.create') }}" method="post">
+      {% include viewPath ~ '/form.twig' %}
+      <div>
+        <button type="submit">
+          Créer
+        </button>
+      </div>
+    </form>
+  </section>
+
+{% endblock %}

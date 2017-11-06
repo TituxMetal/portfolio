@@ -1,0 +1,54 @@
+{% extends "@admin/layout.twig" %}
+
+{% block title "Administration des technologies" %}
+
+{% block content %}
+  
+  <h1>
+    Administration des technologies
+  </h1>
+  
+  <section>
+    <p>
+      <a href="{{ path(routePrefix ~ '.create') }}">
+        Bouton ajouter une technologie
+      </a>
+    </p>
+  </section>
+  
+  <table>
+    <thead>
+      <tr>
+        <td>
+          Titre
+        </td>
+        <td>
+          Actions
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+    {% for item in items %}
+      <tr>
+        <td>
+          {{ item.name }}
+        </td>
+        <td>
+          <a href="{{ path(routePrefix ~ '.edit', {id: item.id}) }}">
+            Éditer
+          </a> | 
+          <form action="{{ path(routePrefix ~ '.delete', {id: item.id}) }}" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <button>
+              Supprimer
+            </button>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+    
+  {{ paginate(items, routePrefix ~ '.index') }}
+
+{% endblock %}
