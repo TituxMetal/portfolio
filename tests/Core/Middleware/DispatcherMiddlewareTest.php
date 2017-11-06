@@ -42,5 +42,4 @@ class DispatcherMiddlewareTest extends TestCase {
     
     $this->assertEquals($response, call_user_func_array($dispatcher, [$request, [$delegate, 'process']]));
   }
-  
 }

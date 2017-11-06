@@ -20,5 +20,4 @@ class MethodMiddleware {
     
     return $next($request);
   }
-  
 }

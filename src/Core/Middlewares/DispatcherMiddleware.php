@@ -29,7 +29,6 @@ class DispatcherMiddleware {
     $route = $request->getAttribute(Route::class);
     
     if (is_null($route)) {
-      
       return $next($request);
     }
     

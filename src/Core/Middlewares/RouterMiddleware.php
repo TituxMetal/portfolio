@@ -25,7 +25,6 @@ class RouterMiddleware {
     $route = $this->router->match($request);
     
     if (is_null($route)) {
-      
       return $next($request);
     }
 
@@ -34,7 +33,9 @@ class RouterMiddleware {
       array_keys($params),
       function ($request, $key) use ($params) {
         return $request->withAttribute($key, $params[$key]);
-    }, $request);
+      },
+        $request
+        );
     
     $requestAttr = $requestParams->withAttribute(get_class($route), $route);
     

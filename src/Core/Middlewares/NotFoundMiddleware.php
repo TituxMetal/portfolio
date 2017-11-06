@@ -16,5 +16,4 @@ class NotFoundMiddleware {
     
     return new Response(404, [], 'Erreur 404');
   }
-  
 }

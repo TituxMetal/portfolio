@@ -31,5 +31,4 @@ class MethodMiddlewareTest extends TestCase {
       $this->assertEquals('DELETE', $request->getMethod());
     }]);
   }
-  
 }

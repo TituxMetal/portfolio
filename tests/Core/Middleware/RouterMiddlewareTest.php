@@ -45,5 +45,4 @@ class RouterMiddlewareTest extends TestCase {
     
     $this->assertEquals($response, call_user_func_array($middleware, [new ServerRequest('GET', '/test'), $test]));
   }
-  
 }

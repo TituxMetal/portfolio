@@ -23,5 +23,4 @@ class TrailingSlashMiddleware {
     
     return $next($request);
   }
-  
 }
