@@ -24,13 +24,63 @@ class Router {
   }
   
   /**
+   * Add a route for get requests
    *
    * @param string $path
    * @param string|callable $callback
-   * @param string $name
+   * @param string|null $name
    */
-  public function get(string $path, $callback, string $name) {
+  public function get(string $path, $callback, $name = null) {
     $this->router->addRoute(new ZendRoute($path, $callback, ['GET'], $name));
+  }
+  
+  /**
+   * Add a route for post requests
+   *
+   * @param string $path
+   * @param string|callable $callback
+   * @param string|null $name
+   */
+  public function post(string $path, $callback, $name = null) {
+    $this->router->addRoute(new ZendRoute($path, $callback, ['POST'], $name));
+  }
+  
+  /**
+   * Add a route for delete requests
+   *
+   * @param string $path
+   * @param string|callable $callback
+   * @param string|null $name
+   */
+  public function delete(string $path, $callback, $name = null) {
+    $this->router->addRoute(new ZendRoute($path, $callback, ['DELETE'], $name));
+  }
+  
+  /**
+   * Add a route for any (get, post, put, patch, delete) requests
+   *
+   * @param string $path
+   * @param string|callable $callback
+   * @param string|null $name
+   */
+  public function any(string $path, $callback, $name = null) {
+    $this->router->addRoute(
+      new ZendRoute(
+          $path,
+        $callback,
+        ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+        $name
+      )
+    );
+  }
+  
+  public function crud(string $prefixPath, $callable, $prefixName = null) {
+    $this->get("$prefixPath", $callable, "$prefixName.index");
+    $this->get("$prefixPath/new", $callable, "$prefixName.create");
+    $this->post("$prefixPath/new", $callable);
+    $this->get("$prefixPath/{id:\d+}", $callable, "$prefixName.edit");
+    $this->post("$prefixPath/{id:\d+}", $callable);
+    $this->delete("$prefixPath/{id:\d+}", $callable, "$prefixName.delete");
   }
   
   /**
@@ -51,8 +101,13 @@ class Router {
     return null;
   }
   
-  public function generateUri(string $name, array $params): string {
+  public function generateUri(string $name, array $params = [], array $queryParams = []): string {
+    $uri = $this->router->generateUri($name, $params);
     
-    return $this->router->generateUri($name, $params);
+    if (!empty($queryParams)) {
+      return $uri . '?' . http_build_query($queryParams);
+    }
+    
+    return $uri;
   }
 }
