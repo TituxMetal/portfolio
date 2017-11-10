@@ -3,6 +3,7 @@
 namespace Portfolio\Modules\Technology\Entity;
 
 use Portfolio\Core\Entity\Timestamp;
+use Portfolio\Modules\Common\Entity\Picture;
 
 /**
  * Description of Technology
@@ -22,6 +23,16 @@ class Technology {
    * @var string|null
    */
   private $name;
+  
+  /**
+   * @var Picture|null
+   */
+  private $picture;
+  
+  /**
+   * @var int|null
+   */
+  private $pictureId;
   
   /**
    * Get the id of the technology
@@ -44,6 +55,26 @@ class Technology {
   }
   
   /**
+   * Get the picture entity
+   *
+   * @return Picture|null
+   */
+  public function getPicture() {
+    
+    return $this->picture;
+  }
+  
+  /**
+   * Get the pictureId of the technology
+   *
+   * @return int|null
+   */
+  public function getPictureId() {
+    
+    return $this->pictureId;
+  }
+  
+  /**
    * Set the id for the technology
    *
    * @param int|null $id
@@ -59,5 +90,26 @@ class Technology {
    */
   public function setName($name): void {
     $this->name = $name;
+  }
+  
+  /**
+   * Set the picture of the technology
+   *
+   * @param Picture|null $picture
+   */
+  public function setPicture($picture) {
+    if (is_null($picture)) {
+      $picture = new Picture();
+    }
+    $this->picture = $picture;
+  }
+  
+  /**
+   * Set the pictureId for the technology
+   *
+   * @param int|null $pictureId
+   */
+  public function setPictureId($pictureId): void {
+    $this->pictureId = $pictureId;
   }
 }

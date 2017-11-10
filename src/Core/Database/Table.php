@@ -19,6 +19,11 @@ class Table {
   private $pdo;
   
   /**
+   * @var string|null
+   */
+  protected $alias;
+  
+  /**
    * @var array
    */
   protected $fields = [];
@@ -113,6 +118,53 @@ class Table {
     }
     
     return $list;
+  }
+  
+  /**
+   * Make a query with a join relation and returns it to execution.
+   *
+   * @param Table|mixed $current The current table for the relation.
+   * @param Table|mixed $related The related table for the relation.
+   * @param string $currentIndexField The index fiels name for the relation.
+   * @return Query The query with the relation to execute.
+   */
+  public function makeRelationQuery($current, $related, string $currentIndexField) {
+    $relatedTable = $related->getTable();
+    
+    return $this->makeQuery()
+      ->select($current->getAliasedFields(), $related->getAliasedFields('_'))
+      ->from($current->table, $current->alias)
+      ->join($relatedTable, "$relatedTable.id = $currentIndexField");
+  }
+  
+  public function makeRelationResults($query, string $entityFieldName, $currentEntity, $relatedEntity) {
+    $queryResults = $this->getPdo()->query($query)->fetchAll(PDO::FETCH_ASSOC);
+    $current = [];
+    $related = [];
+    
+    for ($i = 0; $i < count($queryResults); ++$i) {
+      $results = $queryResults[$i];
+    
+      foreach ($results as $key => $value) {
+        if (substr($key, 0, 1) === '_') {
+          $related[$i][ltrim($key, '_')] = $value;
+        } else {
+          $current[$i][$key] = $value;
+          $current[$i][$entityFieldName] = '';
+        }
+      }
+    }
+    
+    $items = [];
+    $setMethod = 'set' . mb_strtoupper($entityFieldName);
+    
+    foreach ($related as $k => $r) {
+      $rel[$k] = Hydrator::hydrate($r, $relatedEntity->getEntity());
+      $items[$k] = Hydrator::hydrate($current[$k], $currentEntity->getEntity());
+      $items[$k]->$setMethod($rel[$k]);
+    }
+    
+    return $items;
   }
   
   /**
@@ -265,6 +317,26 @@ class Table {
   protected function getFields(): string {
     
     return $this->fields ? implode(', ', $this->fields) : '*';
+  }
+  
+  /**
+   * Returns the aliased fields, with a prefix if defined, separated by a comma.
+   *
+   * @return string
+   */
+  protected function getAliasedFields($prefix = null): string {
+    
+    if (!is_null($this->alias)) {
+      $parts = [];
+      $fields = array_map(function ($field) use ($parts, $prefix) {
+        $parts[] = (!is_null($prefix)) ? "$this->alias.$field AS {$prefix}{$field}" : "$this->alias.$field";
+        return join('', $parts);
+      }, $this->fields);
+      
+      return implode(', ', $fields);
+    }
+    
+    return $this->getFields();
   }
   
   /**

@@ -2,7 +2,9 @@
 
 namespace Portfolio\Modules\Technology\Table;
 
+use PDO;
 use Portfolio\Core\Database\Table;
+use Portfolio\Modules\Common\Table\PictureTable;
 use Portfolio\Modules\Technology\Entity\Technology;
 
 /**
@@ -12,13 +14,52 @@ use Portfolio\Modules\Technology\Entity\Technology;
  */
 class TechnologyTable extends Table {
   
+  /**
+   * @var string
+   */
+  protected $alias = 'Tech';
+  
+  /**
+   * @var Technology
+   */
   protected $entity = Technology::class;
   
+  /**
+   * @var PictureTable
+   */
+  protected $pictureTable;
+  
+  /**
+   * @var string
+   */
   protected $table = 'Technologies';
   
+  /**
+   * @var array
+   */
   protected $fields = [
-    'id', 'name', 'created', 'updated'
+    'id', 'name', 'pictureId', 'created', 'updated'
   ];
+  
+  public function __construct(PDO $pdo) {
+    $this->pictureTable = new PictureTable($pdo);
+    parent::__construct($pdo);
+  }
+  
+  public function findWithPicture($order = null, $limit = null) {
+    $currentIndexField = "$this->alias.pictureId";
+    $query = $this->makeRelationQuery($this, $this->pictureTable, $currentIndexField);
+    
+    if ($limit) {
+      $query->limit($limit);
+    }
+    
+    if ($order) {
+      $query->order($order);
+    }
+    
+    return $this->makeRelationResults($query, 'picture', $this, $this->pictureTable);
+  }
   
   /**
    * Find the items for the home page.
@@ -28,10 +69,7 @@ class TechnologyTable extends Table {
    */
   public function findForHome(int $resultNb = 12) {
     
-    return $this->findAll()
-      ->limit($resultNb)
-      ->order('created DESC')
-      ->fetchAll();
+    return $this->findWithPicture("$this->alias.created DESC", $resultNb);
   }
   
   /**
@@ -42,10 +80,13 @@ class TechnologyTable extends Table {
    * @return mixed
    */
   public function findPaginated(int $perPage = 15, int $currentPage = 1) {
+    $relatedTable = $this->pictureTable->getTable();
     
     return $this->findAll()
-      ->select($this->getFields())
-      ->order('created DESC')
+      ->select($this->getAliasedFields(), $this->pictureTable->getAliasedFields())
+      ->from($this->table, $this->alias)
+      ->order("$this->alias.created DESC")
+      ->join($relatedTable, "$relatedTable.id = $this->alias.pictureId")
       ->paginate($perPage, $currentPage);
   }
 }
