@@ -23,7 +23,7 @@ class TechnologyModule extends Module {
 
   public function __construct(ContainerInterface $container) {
     $technologyPrefix = $container->get('technology.prefix');
-    $container->get(RendererInterface::class)->addPath('admin', __DIR__ . '/resources/templates');
+    $container->get(RendererInterface::class)->addPath('technologies', __DIR__ . '/resources/templates');
     
     $router = $container->get(Router::class);
     

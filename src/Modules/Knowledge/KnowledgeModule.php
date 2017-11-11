@@ -23,7 +23,7 @@ class KnowledgeModule extends Module {
 
   public function __construct(ContainerInterface $container) {
     $knowledgePrefix = $container->get('knowledge.prefix');
-    $container->get(RendererInterface::class)->addPath('admin', __DIR__ . '/resources/templates');
+    $container->get(RendererInterface::class)->addPath('knowledges', __DIR__ . '/resources/templates');
     
     $router = $container->get(Router::class);
     

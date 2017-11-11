@@ -31,7 +31,7 @@ class TechnologiesCrudAction extends CrudActions {
   /**
    * @var string
    */
-  protected $viewPath = "@admin/admin";
+  protected $viewPath = "@technologies/admin";
   
   public function __construct(
       RendererInterface $renderer,
