@@ -2,7 +2,6 @@
 
 namespace Portfolio\Modules\Knowledge\Table;
 
-use DateTime;
 use Portfolio\Core\Database\Table;
 use Portfolio\Modules\Knowledge\Entity\Knowledge;
 
