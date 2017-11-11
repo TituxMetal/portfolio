@@ -60,7 +60,7 @@ class TableTest extends DatabaseTestCase {
   public function testFindAllPaginate() {
     $this->makeData();
     
-    $test = $this->table->findAll()->paginate(5);
+    $test = $this->table->findPaginated(5);
     
     $this->assertCount(5, $test->getCurrentPageResults());
     $this->assertEquals(100/5, $test->getNbPages());
