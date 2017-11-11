@@ -139,10 +139,11 @@ class Table {
   
   public function makeRelationResults($query, string $entityFieldName, $currentEntity, $relatedEntity) {
     $queryResults = $this->getPdo()->query($query)->fetchAll(PDO::FETCH_ASSOC);
+    $queryResultsCount = count($queryResults);
     $current = [];
     $related = [];
     
-    for ($i = 0; $i < count($queryResults); ++$i) {
+    for ($i = 0; $i < $queryResultsCount; ++$i) {
       $results = $queryResults[$i];
     
       foreach ($results as $key => $value) {
