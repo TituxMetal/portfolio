@@ -31,7 +31,7 @@ class RouterMiddleware {
     $params = $route->getParams();
     $requestParams = array_reduce(
       array_keys($params),
-      function ($request, $key) use ($params) {
+      function (ServerRequestInterface $request, $key) use ($params) {
         return $request->withAttribute($key, $params[$key]);
       },
         $request
