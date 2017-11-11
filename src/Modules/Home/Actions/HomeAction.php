@@ -20,11 +20,6 @@ class HomeAction {
   private $knowledge;
 
   /**
-   * @var PDO
-   */
-  private $pdo;
-
-  /**
    * @var TechnologyTable
    */
   private $technology;
@@ -36,12 +31,10 @@ class HomeAction {
 
   public function __construct(
     RendererInterface $renderer,
-    PDO $pdo,
     KnowledgeTable $knowledge,
     TechnologyTable $technology
   ) {
     $this->renderer = $renderer;
-    $this->pdo = $pdo;
     $this->knowledge = $knowledge;
     $this->technology = $technology;
   }
