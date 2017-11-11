@@ -59,11 +59,6 @@ class CrudActions {
    * @var string
    */
   protected $viewPath;
-
-  /**
-   * @var Router
-   */
-  private $router;
   
   public function __construct(
       RendererInterface $renderer,
