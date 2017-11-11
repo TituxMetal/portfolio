@@ -3,6 +3,7 @@
 namespace Portfolio\Core\Database;
 
 use ArrayAccess;
+use Exception;
 use Iterator;
 
 /**
@@ -51,7 +52,7 @@ class QueryResult implements ArrayAccess, Iterator {
     
     if ($this->entity) {
       if (!isset($this->hydratedRecords[$index])) {
-        $this->hydratedRecords[$index] = Hydrator::hydrate($this->records[$index], $this->entity);
+        $this->hydratedRecords[$index] = \Portfolio\Core\Database\Hydrator::hydrate($this->records[$index], $this->entity);
       }
       
       return $this->hydratedRecords[$index];
