@@ -1,6 +1,5 @@
 {{ errorField() }}
 
 {{ field('name', item.name, "Nom de la technologie") }}
-{#
-{{ field('created', item.created, "Date de création", {type: 'datetime'}) }}
-#}
+{{ field('uri', item.picture.uri, "Chemin de l'image de la technologie") }}
+{{ field('title', item.picture.title, "Titre de l'image de la technologie") }}

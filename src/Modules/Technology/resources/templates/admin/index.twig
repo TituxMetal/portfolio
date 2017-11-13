@@ -20,7 +20,10 @@
     <thead>
       <tr>
         <td>
-          Titre
+          Nom
+        </td>
+        <td>
+          Image
         </td>
         <td>
           Actions
@@ -32,6 +35,9 @@
       <tr>
         <td>
           {{ item.name }}
+        </td>
+        <td>
+          <img src="{{ item.uri }}" alt="{{ item.title }}" width="50px">
         </td>
         <td>
           <a href="{{ path(routePrefix ~ '.edit', {id: item.id}) }}">
