@@ -8,7 +8,7 @@ class AddPictureToTechnologiesTable extends AbstractMigration {
     $this->table('Technologies')
       ->addColumn('pictureId', 'integer', ['after' => 'name'])
       ->addIndex('pictureId')
-      ->addForeignKey('pictureId', 'Pictures', 'id')
+      ->addForeignKey('pictureId', 'Pictures', 'id', ['delete' => 'cascade'])
       ->update();
   }
 }

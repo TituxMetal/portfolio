@@ -8,8 +8,8 @@ class CreatePictureTable extends AbstractMigration {
     $this->table('Pictures')
       ->addColumn('uri', 'string')
       ->addColumn('title', 'string')
-      ->addColumn('updated', 'datetime')
       ->addColumn('created', 'datetime')
+      ->addColumn('updated', 'datetime')
       ->create();
   }
 }
