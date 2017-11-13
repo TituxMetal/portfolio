@@ -137,6 +137,16 @@ class Table {
       ->join($relatedTable, "$relatedTable.id = $currentIndexField");
   }
   
+  /**
+   * Returns the results of a query with relation and build current and related entities foreach
+   * line of results
+   * 
+   * @param mixed $query
+   * @param string $entityFieldName
+   * @param mixed $currentEntity
+   * @param mixed $relatedEntity
+   * @return mixed
+   */
   public function makeRelationResults($query, string $entityFieldName, $currentEntity, $relatedEntity) {
     $queryResults = $this->getPdo()->query($query)->fetchAll(PDO::FETCH_ASSOC);
     $queryResultsCount = count($queryResults);
@@ -156,7 +166,7 @@ class Table {
       }
     }
     
-    $items = [];
+    $items;
     $setMethod = 'set' . mb_strtoupper($entityFieldName);
     
     foreach ($related as $k => $r) {
@@ -166,6 +176,39 @@ class Table {
     }
     
     return $items;
+  }
+  
+  /**
+   * Returns a single result of a query with relation and build current and related entities this result
+   * 
+   * @param mixed $query
+   * @param string $entityFieldName
+   * @param mixed $currentEntity
+   * @param mixed $relatedEntity
+   * @return mixed
+   */
+  public function makeRelationResult($query, string $entityFieldName, $currentEntity, $relatedEntity) {
+    $queryResults = $this->getPdo()->query($query)->fetch(PDO::FETCH_ASSOC);
+    $current = [];
+    $related = [];
+    
+    foreach ($queryResults as $key => $value) {
+      if (substr($key, 0, 1) === '_') {
+        $related[ltrim($key, '_')] = $value;
+      } else {
+        $current[$key] = $value;
+        $current[$entityFieldName] = '';
+      }
+    }
+    
+    $item;
+    $setMethod = 'set' . mb_strtoupper($entityFieldName);
+    
+    $relation = Hydrator::hydrate($related, $relatedEntity->getEntity());
+    $item = Hydrator::hydrate($current, $currentEntity->getEntity());
+    $item->$setMethod($relation);
+    
+    return $item;
   }
   
   /**

@@ -30,6 +30,13 @@ class PictureTable extends Table {
   ];
   
   /**
+   * @var array
+   */
+  public $fillable = [
+    'uri', 'title', 'created', 'updated'
+  ];
+  
+  /**
    * @var string
    */
   protected $table = 'Pictures';

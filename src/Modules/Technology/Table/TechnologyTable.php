@@ -41,9 +41,24 @@ class TechnologyTable extends Table {
     'id', 'name', 'pictureId', 'created', 'updated'
   ];
   
+  /**
+   * @var array
+   */
+  public $fillable = [
+    'name', 'pictureId', 'updated'
+  ];
+  
   public function __construct(PDO $pdo) {
-    $this->pictureTable = new PictureTable($pdo);
     parent::__construct($pdo);
+    $this->pictureTable = new PictureTable($pdo);
+  }
+  
+  public function find(int $id) {
+    $currentIndexField = "$this->alias.pictureId";
+    $query = $this->makeRelationQuery($this, $this->pictureTable, $currentIndexField);
+    $query->where("$this->alias.id = $id");
+    
+    return $this->makeRelationResult($query, 'picture', $this, $this->pictureTable);
   }
   
   public function findWithPicture($order = null, $limit = null) {
@@ -88,5 +103,23 @@ class TechnologyTable extends Table {
       ->order("$this->alias.created DESC")
       ->join($relatedTable, "$relatedTable.id = $this->alias.pictureId")
       ->paginate($perPage, $currentPage);
+  }
+  
+  /**
+   * Delete an item in database.
+   *
+   * @param int $id
+   * @return bool
+   */
+  public function delete(int $id): bool {
+    $item = $this->find($id);
+    $statement = $this->getPdo()->prepare(
+      "DELETE FROM {$this->table} WHERE id = ?"
+    );
+    
+    if ($statement->execute([$id])) {
+      
+      return $this->pictureTable->delete($item->getPictureId());
+    }
   }
 }
