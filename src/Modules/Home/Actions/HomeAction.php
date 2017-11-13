@@ -2,9 +2,9 @@
 
 namespace Portfolio\Modules\Home\Actions;
 
-use PDO;
 use Portfolio\Core\Templating\RendererInterface;
 use Portfolio\Modules\Knowledge\Table\KnowledgeTable;
+use Portfolio\Modules\Project\Table\ProjectTable;
 use Portfolio\Modules\Technology\Table\TechnologyTable;
 
 /**
@@ -20,6 +20,11 @@ class HomeAction {
   private $knowledge;
 
   /**
+   * @var ProjectTable
+   */
+  private $project;
+
+  /**
    * @var TechnologyTable
    */
   private $technology;
@@ -32,17 +37,22 @@ class HomeAction {
   public function __construct(
     RendererInterface $renderer,
     KnowledgeTable $knowledge,
-    TechnologyTable $technology
+    TechnologyTable $technology,
+    ProjectTable $project
   ) {
     $this->renderer = $renderer;
     $this->knowledge = $knowledge;
     $this->technology = $technology;
+    $this->project = $project;
   }
   
   public function __invoke(): string {
-    $knowledges = $this->knowledge->findForHome();
-    $technologies = $this->technology->findForHome();
+    $knowledges = $this->knowledge->findForHome(15);
+    $technologies = $this->technology->findForHome(25);
+    $projects = $this->project->findForHome(5);
     
-    return $this->renderer->render('@home/index', compact('knowledges', 'technologies'));
+    //dump($projects[0]->getPicture()->getUri()); die();
+    
+    return $this->renderer->render('@home/index', compact('knowledges', 'technologies', 'projects'));
   }
 }

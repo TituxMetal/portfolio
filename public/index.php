@@ -11,6 +11,7 @@ use Portfolio\Modules\Admin\AdminModule;
 use Portfolio\Modules\Common\CommonModule;
 use Portfolio\Modules\Home\HomeModule;
 use Portfolio\Modules\Knowledge\KnowledgeModule;
+use Portfolio\Modules\Project\ProjectModule;
 use Portfolio\Modules\Technology\TechnologyModule;
 use function Http\Response\send;
 
@@ -21,6 +22,7 @@ $app = (new App(dirname(__DIR__) . '/app/config.php'))
   ->addModule(CommonModule::class)
   ->addModule(KnowledgeModule::class)
   ->addModule(TechnologyModule::class)
+  ->addModule(ProjectModule::class)
   ->addModule(HomeModule::class)
   ->pipe(TrailingSlashMiddleware::class)
   ->pipe(MethodMiddleware::class)

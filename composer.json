@@ -22,7 +22,7 @@
     "fzaninotto/faker": "^1.7",
     "phpunit/phpunit": "^6.2",
     "phpunit/php-code-coverage": "^5.2",
-    "robmorgan/phinx": "^0.7.2",
+    "robmorgan/phinx": "^0.8.1",
     "symfony/var-dumper": "^3.0"
   },
   "autoload": {
