@@ -2,16 +2,12 @@
 
 namespace Portfolio\Modules\Common\Entity;
 
-use Portfolio\Core\Entity\Timestamp;
-
 /**
  * Description of Picture
  *
  * @author Titux Metal <tituxmetal@gmail.com>
  */
 class Picture {
-  
-  use Timestamp;
   
   /**
    * @var int|null

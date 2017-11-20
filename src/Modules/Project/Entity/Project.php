@@ -35,11 +35,6 @@ class Project {
   private $picture;
   
   /**
-   * @var int|null
-   */
-  private $pictureId;
-  
-  /**
    * @var Link|null
    */
   private $mainLink;
@@ -87,16 +82,6 @@ class Project {
   public function getPicture() {
     
     return $this->picture;
-  }
-  
-  /**
-   * Get the pictureId of the project
-   * 
-   * @return int|null
-   */
-  public function getPictureId() {
-    
-    return $this->pictureId;
   }
   
   /**
@@ -157,15 +142,6 @@ class Project {
     }
     
     $this->picture = $picture;
-  }
-  
-  /**
-   * Set the pictureId of the project
-   * 
-   * @param int|null $pictureId
-   */
-  public function setPictureId($pictureId): void {
-    $this->pictureId = $pictureId;
   }
   
   /**
