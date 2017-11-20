@@ -274,6 +274,7 @@ class Query {
     $parts[] = $this->buildFrom();
     
     if (!empty($this->joins)) {
+      
       foreach ($this->joins as $type => $joins) {
         $parts[] = $this->buildJoins($type, $joins);
       }
@@ -323,8 +324,10 @@ class Query {
       $table = $v[0];
       $condition = $v[1];
       
-      return strtoupper($type) . " JOIN $table ON $condition";
+      $query[] = strtoupper($type) . " JOIN $table ON $condition";
     }
+    
+    return join(' ', $query);
   }
   
   /**

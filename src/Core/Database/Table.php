@@ -125,7 +125,24 @@ class Table {
    *
    * @param Table|mixed $current The current table for the relation.
    * @param Table|mixed $related The related table for the relation.
-   * @param string $currentIndexField The index fiels name for the relation.
+   * @param string $currentIndexField The index field name for the relation.
+   * @return Query The query with the relation to execute.
+  public function makeRelationQuery($current, $related, string $currentIndexField) {
+    $relatedTable = $related->getTable();
+    
+    return $this->makeQuery()
+      ->select($current->getAliasedFields(), $related->getAliasedFields('_'))
+      ->from($current->table, $current->alias)
+      ->join($relatedTable . " AS {$related->getAlias()}", "{$related->getAlias()}.id = $currentIndexField");
+  }
+   */
+  
+  /**
+   * Make a query with a join relation and returns it to execution.
+   *
+   * @param Table|mixed $current The current table for the relation.
+   * @param Table|mixed $related The related table for the relation.
+   * @param string $currentIndexField The index field name for the relation.
    * @return Query The query with the relation to execute.
    */
   public function makeRelationQuery($current, $related, string $currentIndexField) {
@@ -134,7 +151,7 @@ class Table {
     return $this->makeQuery()
       ->select($current->getAliasedFields(), $related->getAliasedFields('_'))
       ->from($current->table, $current->alias)
-      ->join($relatedTable, "$relatedTable.id = $currentIndexField");
+      ->join($relatedTable . " AS {$related->getAlias()}", "{$related->getAlias()}.id = $currentIndexField");
   }
   
   /**
@@ -166,7 +183,6 @@ class Table {
       }
     }
     
-    $items;
     $setMethod = 'set' . mb_strtoupper($entityFieldName);
     
     foreach ($related as $k => $r) {
@@ -201,7 +217,6 @@ class Table {
       }
     }
     
-    $item;
     $setMethod = 'set' . mb_strtoupper($entityFieldName);
     
     $relation = Hydrator::hydrate($related, $relatedEntity->getEntity());
@@ -344,6 +359,16 @@ class Table {
   }
   
   /**
+   * Returns the alias of the table.
+   *
+   * @return string
+   */
+  public function getAlias(): string {
+    
+    return $this->alias;
+  }
+  
+  /**
    * Returns the last inserted id.
    *
    * @return int
@@ -381,6 +406,35 @@ class Table {
     }
     
     return $this->getFields();
+  }
+  
+  protected function rmPrefix($prefix, $key) {
+    
+    if ($key !== $prefix && substr($key, 0, strlen($prefix)) === $prefix) {
+      
+      $result = lcfirst(substr_replace($key, null, 0, strlen($prefix)));
+      
+      return (empty($result)) ?: $result;
+    }
+  }
+  
+  protected function clearFields(array $fields, array $fieldList) {
+    
+    return array_filter($fields, function ($key) use ($fieldList) {
+      return (in_array($key, $fieldList));
+    }, ARRAY_FILTER_USE_KEY);
+  }
+  
+  protected function makeAliasedPrefixedFields($fields, string $alias, string $prefix) {
+    $parts = [];
+    
+    $aliasedPrefixedFields = array_map(function ($field) use ($parts, $alias, $prefix) {
+      $upperField = ucfirst(trim($field));
+      $parts[] = "{$alias}.{$field} AS {$prefix}{$upperField}";
+      return join('', $parts);
+    }, explode(', ', $fields));
+    
+    return implode(', ', $aliasedPrefixedFields);
   }
   
   /**
