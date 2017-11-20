@@ -14,7 +14,7 @@ class KnowledgeTable extends Table {
   
   protected $entity = Knowledge::class;
   
-  protected $table = 'Knowledges';
+  protected $table = 'Knowledge';
   
   protected $fields = [
     'id', 'name', 'created', 'updated'
@@ -24,28 +24,12 @@ class KnowledgeTable extends Table {
    * Find the Knowledges for the home page.
    *
    * @param int $resultNb
-   * @return type
+   * @return Knowledge[]
    */
-  public function findForHome(int $resultNb = 5) {
+  public function getAll() {
     
     return $this->findAll()
-      ->limit($resultNb)
       ->order('created DESC')
       ->fetchAll();
-  }
-  
-  /**
-   * Paginate all items.
-   *
-   * @param int $perPage
-   * @param int $currentPage
-   * @return mixed
-   */
-  public function findPaginated(int $perPage = 15, int $currentPage = 1) {
-    
-    return $this->findAll()
-      ->select($this->getFields())
-      ->order('created DESC')
-      ->paginate($perPage, $currentPage);
   }
 }

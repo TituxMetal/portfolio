@@ -32,20 +32,20 @@ class TechnologyTable extends Table {
   /**
    * @var string
    */
-  protected $table = 'Technologies';
+  protected $table = 'Technology';
   
   /**
    * @var array
    */
   protected $fields = [
-    'id', 'name', 'pictureId', 'created', 'updated'
+    'id', 'name', 'picture', 'created', 'updated'
   ];
   
   /**
    * @var array
    */
   public $fillable = [
-    'name', 'pictureId', 'updated'
+    'name', 'picture', 'updated'
   ];
   
   public function __construct(PDO $pdo) {
@@ -62,7 +62,7 @@ class TechnologyTable extends Table {
   }
   
   public function findWithPicture($order = null, $limit = null) {
-    $currentIndexField = "$this->alias.pictureId";
+    $currentIndexField = "$this->alias.picture";
     $query = $this->makeRelationQuery($this, $this->pictureTable, $currentIndexField);
     
     if ($limit) {
@@ -79,12 +79,11 @@ class TechnologyTable extends Table {
   /**
    * Find the items for the home page.
    *
-   * @param int $resultNb
-   * @return type
+   * @return Technology[]
    */
-  public function findForHome(int $resultNb = 12) {
+  public function getAll() {
     
-    return $this->findWithPicture("$this->alias.created DESC", $resultNb);
+    return $this->findWithPicture("$this->alias.created DESC");
   }
   
   /**

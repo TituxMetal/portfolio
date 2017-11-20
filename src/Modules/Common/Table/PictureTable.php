@@ -15,7 +15,7 @@ class PictureTable extends Table {
   /**
    * @var string
    */
-  protected $alias = 'Pictures';
+  protected $alias = 'Pict';
   
   /**
    * @var Picture
@@ -25,19 +25,19 @@ class PictureTable extends Table {
   /**
    * @var array
    */
-  protected $fields = [
-    'id', 'uri', 'title', 'created', 'updated'
+  public $fields = [
+    'id', 'uri', 'title'
   ];
   
   /**
    * @var array
    */
   public $fillable = [
-    'uri', 'title', 'created', 'updated'
+    'uri', 'title'
   ];
   
   /**
    * @var string
    */
-  protected $table = 'Pictures';
+  protected $table = 'Picture';
 }
