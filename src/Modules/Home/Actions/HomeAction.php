@@ -47,11 +47,9 @@ class HomeAction {
   }
   
   public function __invoke(): string {
-    $knowledges = $this->knowledge->findForHome(15);
-    $technologies = $this->technology->findForHome(25);
-    $projects = $this->project->findForHome(5);
-    
-    //dump($projects[0]->getPicture()->getUri()); die();
+    $knowledges = $this->knowledge->getAll();
+    $technologies = $this->technology->getAll();
+    $projects = $this->project->getAll();
     
     return $this->renderer->render('@home/index', compact('knowledges', 'technologies', 'projects'));
   }
