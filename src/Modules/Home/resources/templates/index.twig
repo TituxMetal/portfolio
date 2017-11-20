@@ -1,13 +1,11 @@
 {% extends "layout.twig" %}
 
 {% block content %}
-{#  
   
   {% include 'partials/header.twig' %}
 
   {% include 'partials/navigation.twig' %}
 
-#}
   <section class="box__wrap skills" id="skills">
     
     {% include '@home/blocks/knowledges.twig' %}
@@ -27,15 +25,13 @@
     {% include '@home/blocks/projects.twig' %}
 
   </section>
-{#
 
   <section class="bg__contact contact" id="contact">
   
     {% include '@home/blocks/contact.twig' %}
 
   </section>
-
-{% include 'partials/footer.twig' %}
   
-#}
+  {% include 'partials/footer.twig' %}
+
 {% endblock %}

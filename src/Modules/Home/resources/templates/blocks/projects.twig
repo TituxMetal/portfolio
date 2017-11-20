@@ -5,7 +5,7 @@
     <li>
       <article class="project">
         <h2 class="lead">
-          <a href="{{ project.mainLink.href }}" title="{{ project.mainLink.title }}" target="_blank" class="underline">{{ project.name }}</a>
+          <a href="{{ project.mainLink.uri }}" title="{{ project.mainLink.title }}" target="_blank" class="underline">{{ project.name }}</a>
         </h2>
         <p class="project__description">
           {{ project.content }}
@@ -16,15 +16,15 @@
         <footer class="project__link">
           <ul>
             <li>
-              <a href="{{ project.mainLink.href }}" title="{{ project.mainLink.title }}" target="_blank" class="underline">
-                <i class="fa fa-globe" aria-hidden="true"></i>
+              <a href="{{ project.mainLink.uri }}" title="{{ project.mainLink.title }}" target="_blank" class="underline">
+                <i class="fa {{ project.mainLink.iconClass }}" aria-hidden="true"></i>
                 {{ project.mainLink.label }}
               </a>
             </li>
             <li>
-              <a href="{{ project.sourcesLink.href }}" title="{{ project.sourcesLink.title }}" target="_blank" class="underline">
-                <i class="fa fa-github" aria-hidden="true"></i>
-                {{ project.sourcesLink.label }}
+              <a href="{{ project.sourceLink.uri }}" title="{{ project.sourceLink.title }}" target="_blank" class="underline">
+                <i class="fa {{ project.sourceLink.iconClass }}" aria-hidden="true"></i>
+                {{ project.sourceLink.label }}
               </a>
             </li>
           </ul>
