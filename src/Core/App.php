@@ -23,9 +23,9 @@ class App implements DelegateInterface {
   private $container;
 
   /**
-   * @var string|array|null
+   * @var array
    */
-  private $definition;
+  private $definitions;
   
   /**
    * @var int
@@ -44,10 +44,15 @@ class App implements DelegateInterface {
   private $modules = [];
   
   /**
-   * @param string|null $definition
+   * @param array|string|null $definitions
    */
-  public function __construct($definition = null) {
-    $this->definition = $definition;
+  public function __construct($definitions = []) {
+    
+    if (is_string($definitions) || !$this->isSequential($definitions)) {
+      $definitions = [$definitions];
+    }
+    
+    $this->definitions = $definitions;
   }
   
   /**
@@ -139,8 +144,10 @@ class App implements DelegateInterface {
   private function buildContainer(): ContainerInterface {
     $builder = new ContainerBuilder();
       
-    if ($this->definition) {
-      $builder->addDefinitions($this->definition);
+    if ($this->definitions) {
+      array_map(function ($definition) use ($builder) {
+        $builder->addDefinitions($definition);
+      }, $this->definitions);
     }
 
     if ($this->modules) {
@@ -149,9 +156,21 @@ class App implements DelegateInterface {
         ($module::DEFINITIONS) ? $builder->addDefinitions($module::DEFINITIONS) : '';
       }, $this->modules);
     }
-
+    $builder->addDefinitions([
+      App::class => $this
+    ]);
     $this->container = $builder->build();
 
     return $this->container;
+  }
+  
+  private function isSequential(array $array): bool {
+    
+    if (empty($array)) {
+      
+      return true;
+    }
+    
+    return array_keys($array) === range(0, count($array) - 1);
   }
 }
