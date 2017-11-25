@@ -17,25 +17,26 @@ class ValidationError {
   /**
    * @var string
    */
-  private $rule;
+  private $key;
+  
+  private $messages = [
+    'required' => "Ce champs est requis",
+    'notEmpty' => "Ce champs est obligatoire",
+    'email' => "Le champs email doit être valide",
+    'slug' => "Ce champs n'est pas valide (a-z 0-9 -)",
+    'minLength' => "Minimum requis %d caractères",
+    'maxLength' => "Maximum requis %d caractères",
+    'betweenLength' => "Minimum requis entre %d et %d caractères",
+    'dateTime' => "La date et l'heure doivent être valide (%s)",
+    'date' => "La date doit être valide (%s)",
+    'time' => "L'heure doit être valide (%s)",
+    'exists' => "Ce champs n'existe pas",
+  ];
 
   /**
    * @var string
    */
-  private $key;
-  
-  private $messages = [
-    'required' => "Le champs %s est requis",
-    'notEmpty' => "Le champs %s ne doit pas être vide",
-    'slug' => "Le champs %s n'est pas valide (a-z 0-9 -)",
-    'minLength' => "La longueur du champs %s doit être au minimum de %d caractères",
-    'maxLength' => "La longueur du champs %s doit être au maximum de %d caractères",
-    'betweenLength' => "La longueur du champs %s doit être comprise entre %d et %d caractères",
-    'dateTime' => "Le champs %s doit être une date valide (%s)",
-    'date' => "Le champs %s doit être une date valide (%s)",
-    'time' => "Le champs %s doit être une heure valide (%s)",
-    'exists' => "Le champs %s n'existe pas dans la table %s",
-  ];
+  private $rule;
 
   public function __construct(string $key, string $rule, array $attributes = []) {
     $this->key = $key;
@@ -44,7 +45,7 @@ class ValidationError {
   }
   
   public function __toString() {
-    $params = array_merge([$this->messages[$this->rule], $this->key], $this->attributes);
+    $params = array_merge([$this->messages[$this->rule]], $this->attributes);
     
     return (string) call_user_func_array('sprintf', $params);
   }

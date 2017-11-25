@@ -47,7 +47,7 @@ class Validator {
   }
   
   /**
-   * Check that required fields are in params array
+   * Check that values in required fields are not empty
    *
    * @param string $keys
    * @return Validator
@@ -55,11 +55,27 @@ class Validator {
   public function notEmpty(string ...$keys): self {
     
     foreach ($keys as $key) {
-      $value = $this->getValue($key);
+      $value = trim($this->getValue($key));
       
       if (empty($value) || is_null($value)) {
         $this->addError($key, 'notEmpty');
       }
+    }
+    
+    return $this;
+  }
+  
+  /**
+   * Check that the given email is valid
+   * 
+   * @param string $email
+   * @return Validator
+   */
+  public function email(string $email): self {
+    $value = $this->getValue($email);
+    
+    if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
+      $this->addError($email, 'email');
     }
     
     return $this;
@@ -109,7 +125,7 @@ class Validator {
    */
   public function length(string $key, int $min = null, int $max = null): self {
     $value = $this->getValue($key);
-    $length = mb_strlen($value);
+    $length = mb_strlen(trim($value));
     
     if (!is_null($min) && $length < $min) {
       $this->addError($key, 'minLength', [$min]);
@@ -175,6 +191,11 @@ class Validator {
     return $this->errors;
   }
   
+  /**
+   * Check if is valid or not
+   * 
+   * @return bool
+   */
   public function isValid(): bool {
     return empty($this->getErrors());
   }

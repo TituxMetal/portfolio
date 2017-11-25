@@ -38,7 +38,7 @@ class ValidatorTest extends DatabaseTestCase {
       ->getErrors();
     
     $this->assertCount(1, $errors);
-    $this->assertEquals("Le champs content est requis", (string) $errors['content']);
+    $this->assertEquals("Ce champs est requis", (string) $errors['content']);
   }
   
   public function testRequiredSuccess() {
@@ -47,6 +47,23 @@ class ValidatorTest extends DatabaseTestCase {
       ->getErrors();
     
     $this->assertCount(0, $errors);
+  }
+  
+  public function testValidEmail() {
+    $errors = $this->makeValidator(['email' => 'test@demo.com'])
+      ->email('email')
+      ->getErrors();
+    
+    $this->assertCount(0, $errors);
+  }
+  
+  public function testNotValidEmail() {
+    $errors = $this->makeValidator(['email' => 'testInvalidEmail'])
+      ->email('email')
+      ->getErrors();
+    
+    $this->assertCount(1, $errors);
+    $this->assertEquals("Le champs email doit être valide", (string) $errors['email']);
   }
   
   public function testSlugSuccess() {
@@ -91,15 +108,15 @@ class ValidatorTest extends DatabaseTestCase {
     
     $minError = $this->makeValidator($params)->length('name', 12)->getErrors();
     $this->assertCount(1, $minError);
-    $this->assertEquals("La longueur du champs name doit être au minimum de 12 caractères", (string) $minError['name']);
+    $this->assertEquals("Minimum requis 12 caractères", (string) $minError['name']);
     
     $maxError = $this->makeValidator($params)->length('name', null, 8)->getErrors();
     $this->assertCount(1, $maxError);
-    $this->assertEquals("La longueur du champs name doit être au maximum de 8 caractères", (string) $maxError['name']);
+    $this->assertEquals("Maximum requis 8 caractères", (string) $maxError['name']);
     
     $betweenError = $this->makeValidator($params)->length('name', 3, 4)->getErrors();
     $this->assertCount(1, $betweenError);
-    $this->assertEquals("La longueur du champs name doit être comprise entre 3 et 4 caractères", (string) $betweenError['name']);
+    $this->assertEquals("Minimum requis entre 3 et 4 caractères", (string) $betweenError['name']);
     
     $this->assertCount(0, $this->makeValidator($params)->length('name', 3)->getErrors());
     
@@ -116,7 +133,7 @@ class ValidatorTest extends DatabaseTestCase {
     $this->assertCount(1, $this->makeValidator(['datetime' => ''])->dateTime('datetime')->getErrors());
     
     $errorMessage = $this->makeValidator(['datetime' => '2010-08-31'])->dateTime('datetime')->getErrors();
-    $this->assertEquals("Le champs datetime doit être une date valide (Y-m-d H:i:s)", (string) $errorMessage['datetime']);
+    $this->assertEquals("La date et l'heure doivent être valide (Y-m-d H:i:s)", (string) $errorMessage['datetime']);
   }
   
   public function testDate() {
@@ -129,7 +146,7 @@ class ValidatorTest extends DatabaseTestCase {
     $this->assertCount(1, $this->makeValidator(['date' => ''])->date('date')->getErrors());
     
     $errorMessage = $this->makeValidator(['date' => '2010-06-31'])->date('date')->getErrors();
-    $this->assertEquals("Le champs date doit être une date valide (Y-m-d)", (string) $errorMessage['date']);
+    $this->assertEquals("La date doit être valide (Y-m-d)", (string) $errorMessage['date']);
   }
   
   public function testTime() {
@@ -141,7 +158,7 @@ class ValidatorTest extends DatabaseTestCase {
     $this->assertCount(1, $this->makeValidator(['time' => ''])->time('time')->getErrors());
     
     $errorMessage = $this->makeValidator(['time' => '37:73:73'])->time('time')->getErrors();
-    $this->assertEquals("Le champs time doit être une heure valide (H:i:s)", (string) $errorMessage['time']);
+    $this->assertEquals("L'heure doit être valide (H:i:s)", (string) $errorMessage['time']);
   }
   
   public function testExists() {
