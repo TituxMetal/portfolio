@@ -3,6 +3,7 @@
 namespace Portfolio\Core\Helpers;
 
 use GuzzleHttp\Psr7\Response;
+use Portfolio\Core\Routing\Router;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -13,6 +14,11 @@ use Psr\Http\Message\ServerRequestInterface;
  */
 trait RouterAware {
   
+  public function getRouter() {
+    
+    return new Router();
+  }
+  
   /**
    * Returns a redirect response
    *
@@ -21,7 +27,7 @@ trait RouterAware {
    * @return ResponseInterface
    */
   public function redirect(string $path, array $params = []): ResponseInterface {
-    $redirectUri = $this->router->generateUri($path, $params);
+    $redirectUri = $this->getRouter()->generateUri($path, $params);
       
     return (new Response())
       ->withStatus(301)

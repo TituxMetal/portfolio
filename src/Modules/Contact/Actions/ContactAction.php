@@ -2,16 +2,14 @@
 
 namespace Portfolio\Modules\Contact\Actions;
 
-use Portfolio\Core\Mail\Message;
 use Portfolio\Core\Helpers\RouterAware;
-use Portfolio\Core\Routing\Router;
+use Portfolio\Core\Mail\Message;
 use Portfolio\Core\Sessions\FlashService;
 use Portfolio\Core\Sessions\SessionInterface;
 use Portfolio\Core\Templating\RendererInterface;
 use Portfolio\Core\Validation\Validator;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Swift_Mailer;
 
 /**
  * Description of ContactAction
@@ -46,11 +44,6 @@ class ContactAction {
   private $renderer;
   
   /**
-   * @var Router
-   */
-  private $router;
-  
-  /**
    * @var SessionInterface
    */
   private $session;
@@ -64,14 +57,12 @@ class ContactAction {
       ContainerInterface $container,
       FlashService $flash,
       RendererInterface $renderer,
-      Router $router,
       SessionInterface $session,
       string $to
     ) {
     $this->container = $container;
     $this->flash = $flash;
     $this->renderer = $renderer;
-    $this->router = $router;
     $this->session = $session;
     $this->to = $to;
   }
