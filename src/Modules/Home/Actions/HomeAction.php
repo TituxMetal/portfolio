@@ -46,7 +46,7 @@ class HomeAction {
     $this->project = $project;
   }
   
-  public function __invoke(): string {
+  public function __invoke() {
     $knowledges = $this->knowledge->getAll();
     $technologies = $this->technology->getAll();
     $projects = $this->project->getAll();
