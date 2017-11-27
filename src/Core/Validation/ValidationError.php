@@ -13,11 +13,6 @@ class ValidationError {
    * @var array
    */
   private $attributes;
-
-  /**
-   * @var string
-   */
-  private $key;
   
   private $messages = [
     'required' => "Ce champs est requis",
@@ -38,8 +33,7 @@ class ValidationError {
    */
   private $rule;
 
-  public function __construct(string $key, string $rule, array $attributes = []) {
-    $this->key = $key;
+  public function __construct(string $rule, array $attributes = []) {
     $this->rule = $rule;
     $this->attributes = $attributes;
   }

@@ -208,7 +208,7 @@ class Validator {
    * @return void
    */
   private function addError(string $key, string $rule, array $attributes = []): void {
-    $this->errors[$key] = new ValidationError($key, $rule, $attributes);
+    $this->errors[$key] = new ValidationError($rule, $attributes);
   }
   
   /**
