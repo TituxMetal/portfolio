@@ -130,16 +130,4 @@ class ProjectTable extends Table {
     
     return $this->findAllWithRelations("$this->alias.created DESC");
   }
-  
-  /**
-   * Make a query with multiple join relations and returns it to execution.
-   * 
-   * @param Table|mixed $current The current table for the relation.
-   * @param mixed[] $related The related tables for the relations.
-   * @param array $indexFields The index fields for the relations.
-   * @return Query The query with the relation to execute.
-   */
-  private function makeMultiRelationsQuery($current, array $related = [], array $indexFields = []) {
-    
-  }
 }
