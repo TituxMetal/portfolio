@@ -28,9 +28,9 @@ class DatabaseTestCase extends TestCase {
     );
   }
   
-  public function makeKnowledgesTable() {
+  public function makeKnowledgeTable() {
     $this->pdo->exec(
-      "CREATE TABLE Knowledges (
+      "CREATE TABLE Knowledge (
         id integer PRIMARY KEY AUTOINCREMENT,
         name varchar(255),
         created datetime,
@@ -39,9 +39,9 @@ class DatabaseTestCase extends TestCase {
     );
   }
   
-  public function makeTechnologiesTable() {
+  public function makeTechnologyTable() {
     $this->pdo->exec(
-      "CREATE TABLE Pictures (
+      "CREATE TABLE Picture (
         id integer PRIMARY KEY AUTOINCREMENT,
         title varchar(255),
         uri varchar(255),
@@ -50,15 +50,15 @@ class DatabaseTestCase extends TestCase {
       )"
     );
     $this->pdo->exec(
-      "CREATE TABLE Technologies (
+      "CREATE TABLE Technology (
         id integer PRIMARY KEY AUTOINCREMENT,
         name varchar(255),
-        pictureId integer(11),
+        picture integer(11),
         created datetime,
         updated datetime,
         CONSTRAINT picture
-          FOREIGN KEY (pictureId)
-          REFERENCES Pictures(id)
+          FOREIGN KEY (picture)
+          REFERENCES Picture(id)
       )"
     );
   }
@@ -73,36 +73,36 @@ class DatabaseTestCase extends TestCase {
     }
   }
   
-  public function makeKnowledgesData(int $nb = 100) {
+  public function makeKnowledgeData(int $nb = 100) {
     $datetime = date('Y-m-d H:i:s');
     
     for ($i = 1; $i <= $nb; ++$i) {
       $this->pdo->exec(
-        "INSERT INTO Knowledges (name, created, updated)
+        "INSERT INTO Knowledge (name, created, updated)
         VALUES ('aze$i', '$datetime', '$datetime')"
       );
     }
   }
   
-  public function makeTechnologiesData(int $nb = 100) {
+  public function makeTechnologyData(int $nb = 100) {
     $datetime = date('Y-m-d H:i:s');
     
-    $this->makePicturesData();
+    $this->makePictureData();
     
     for ($i = 1; $i <= $nb; ++$i) {
       $this->pdo->exec(
-        "INSERT INTO Technologies (name, pictureId, created, updated)
+        "INSERT INTO Technology (name, picture, created, updated)
         VALUES ('aze$i', $i, '$datetime', '$datetime')"
       );
     }
   }
   
-  public function makePicturesData(int $nb = 100) {
+  public function makePictureData(int $nb = 100) {
     $datetime = date('Y-m-d H:i:s');
     
     for ($i = 1; $i <= $nb; ++$i) {
       $this->pdo->exec(
-        "INSERT INTO Pictures (title, uri, created, updated)
+        "INSERT INTO Picture (title, uri, created, updated)
         VALUES ('Title $i', '/assets/pictures/aze$i', '$datetime', '$datetime')"
       );
     }

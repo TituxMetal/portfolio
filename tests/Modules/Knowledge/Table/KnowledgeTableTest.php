@@ -19,20 +19,20 @@ class KnowledgeTableTest extends DatabaseTestCase {
     parent::setUp();
     
     $this->table = new KnowledgeTable($this->pdo);
-    $this->makeKnowledgesTable();
+    $this->makeKnowledgeTable();
   }
   
-  public function testFindForHome() {
-    $this->makeKnowledgesData();
-    $test = $this->table->findForHome(5);
+  public function testGetAll() {
+    $this->makeKnowledgeData();
+    $test = $this->table->getAll();
     
     $this->assertInstanceOf(Knowledge::class, $test[0]);
     $this->assertEquals('aze1', $test[0]->getName());
-    $this->assertCount(5, $test);
+    $this->assertCount(100, $test);
   }
   
   public function testFindPaginated() {
-    $this->makeKnowledgesData();
+    $this->makeKnowledgeData();
     $test = $this->table->findPaginated(5);
     
     $this->assertCount(5, $test->getCurrentPageResults());
