@@ -9,22 +9,27 @@ use Portfolio\Core\Middlewares\RouterMiddleware;
 use Portfolio\Core\Middlewares\TrailingSlashMiddleware;
 use Portfolio\Modules\Admin\AdminModule;
 use Portfolio\Modules\Common\CommonModule;
+use Portfolio\Modules\Contact\ContactModule;
 use Portfolio\Modules\Home\HomeModule;
 use Portfolio\Modules\Knowledge\KnowledgeModule;
 use Portfolio\Modules\Project\ProjectModule;
 use Portfolio\Modules\Technology\TechnologyModule;
 use function Http\Response\send;
 
-require_once dirname(__DIR__) . '/vendor/autoload.php';
+chdir(dirname(__DIR__));
 
-$app = (new App(dirname(__DIR__) . '/app/config.php'))
+require_once 'vendor/autoload.php';
+
+$app = (new App(['app/config.php', 'config.php']))
   ->addModule(AdminModule::class)
   ->addModule(CommonModule::class)
   ->addModule(KnowledgeModule::class)
   ->addModule(TechnologyModule::class)
   ->addModule(ProjectModule::class)
-  ->addModule(HomeModule::class)
-  ->pipe(TrailingSlashMiddleware::class)
+  ->addModule(ContactModule::class)
+  ->addModule(HomeModule::class);
+
+$app->pipe(TrailingSlashMiddleware::class)
   ->pipe(MethodMiddleware::class)
   ->pipe(RouterMiddleware::class)
   ->pipe(DispatcherMiddleware::class)
