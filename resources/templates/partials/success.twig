@@ -1,5 +1,5 @@
-{% for message in app.session.flashbag.get('success') %}
+{% if flash('success') %}
   <p class="contact__form--success">
-    {{ message }}
+    {{ flash('success') }}
   </p>
-{% endfor %}
+{% endif %}

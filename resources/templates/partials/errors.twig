@@ -1,5 +1,5 @@
-{% for data in app.session.flashbag.get('errors') %}
-  {% for error in data %}
-    <p class="contact__form--errors">{{ error }}</p>
-  {% endfor %}
-{% endfor %}
+{% if flash('error') %}
+  <p class="contact__form--errors">
+    {{ flash('error') }}
+  </p>
+{% endif %}
