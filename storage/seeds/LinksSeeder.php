@@ -19,7 +19,7 @@ class LinksSeeder extends AbstractSeed {
         'created' => date('Y-m-d H:i:s')
       ],
       [
-        'href' => "http://albinweyer.fr",
+        'href' => "http://albin.tuxlab.fr",
         'label' => "Voir le projet",
         'title' => "Page de bienvenue du jeune Albin",
         'created' => date('Y-m-d H:i:s')
