@@ -19,7 +19,7 @@ class LinksSeeder extends AbstractSeed {
         'created' => date('Y-m-d H:i:s')
       ],
       [
-        'href' => "http://albin.tuxlab.fr",
+        'href' => "https://albin.tuxlab.fr",
         'label' => "Voir le projet",
         'title' => "Page de bienvenue du jeune Albin",
         'created' => date('Y-m-d H:i:s')
@@ -31,7 +31,7 @@ class LinksSeeder extends AbstractSeed {
         'created' => date('Y-m-d H:i:s')
       ],
       [
-        'href' => "http://tuxtactoe.ovh",
+        'href' => "https://tuxtactoe.tuxlab.fr",
         'label' => "Voir le projet",
         'title' => "Jeu du Tic Tac Toe",
         'created' => date('Y-m-d H:i:s')
@@ -43,7 +43,7 @@ class LinksSeeder extends AbstractSeed {
         'created' => date('Y-m-d H:i:s')
       ],
       [
-        'href' => "http://notes.tuxlab.fr",
+        'href' => "https://notes.tuxlab.fr",
         'label' => "Voir le projet",
         'title' => "App de prise de notes",
         'created' => date('Y-m-d H:i:s')
