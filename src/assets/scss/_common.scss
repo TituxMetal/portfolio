@@ -1,4 +1,4 @@
-* { box-sizing: border-box; }
+* { box-sizing: border-box; outline: 0; }
 
 html { font-size: 62.5%; }
 
@@ -82,7 +82,7 @@ a.underline {
 }
 
 .bg__profile {
-	background: $primaryColor url("../../dist/img/background/sectionProfileBackground.jpg") no-repeat center center fixed;
+	background: $primaryColor url("../img/background/sectionProfileBackground.jpg") no-repeat center center fixed;
 	background-size: cover;
 	
 	&::after,
@@ -106,6 +106,34 @@ a.underline {
 }
 
 .bg__contact {
-	background: $primaryColor url("../../dist/img/background/sectionContactBackground.jpg") no-repeat center center fixed;
+	background: $primaryColor url("../img/background/sectionContactBackground.jpg") no-repeat center center fixed;
 	background-size: cover;
+}
+
+.backToTop {
+    bottom: 200vh;
+    display: inline-block;
+    height: 5rem;
+    margin: auto;
+    padding: 0;
+    position: fixed;
+    right: 2rem;
+    text-align: center;
+    vertical-align: middle;
+    width: 5rem;
+    
+    background-color: rgba($primaryColor, .2);
+    border-radius: 50%;
+    color: rgba($textColor, .4);
+    cursor: pointer;
+    font-weight: bold;
+    line-height: 5rem;
+    
+    border: none;
+    border: 1px solid rgba($secondaryLight, .4);
+    transition: all ease-in-out .3s;
+  
+  &.sticky {
+    bottom: 2rem;
+  }
 }
