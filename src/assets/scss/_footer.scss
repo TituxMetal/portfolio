@@ -1,0 +1,143 @@
+.footer {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	padding-bottom: 0;
+	
+	
+	&__title {
+		margin: auto;
+		padding-top: 1em;
+		width: 80%;
+		
+		text-align: center;
+	}
+	
+	&__resume,
+	&__links,
+	&__foot {
+		padding-top: 1em;
+		width: 80%;
+		
+		font-size: 1em;
+		
+		ul {
+			align-items: center;
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: flex-start;
+			margin: auto;
+			width: 100%;
+			
+			font-size: 1em;
+			
+			li {
+				padding: 1rem;
+				
+				text-align: left;
+			}
+		}
+	}
+	
+	&__links {
+		
+		ul {
+			flex-flow: column nowrap;
+			justify-content: flex-start;
+			margin-bottom: 2em;
+			
+			li {
+				align-self: flex-start;
+				display: block;
+				width: auto;
+				
+				a {
+					color: $textColor;
+					text-decoration: none;
+
+					&::after {
+						content: '';
+						display: block;
+						height: 1px;
+						width: auto;
+						
+						background-color: $textColor;
+						transition: height .2s;
+					}
+
+					&:hover::after {
+						height: 2px;
+					}
+				}
+			}
+		}
+	}
+	
+	&__foot {
+		padding: 2em;
+		width: 100%;
+		
+		background-color: $primaryLight;
+		color: darken($textColor, 40);
+		font-size: .8em;
+		
+		a {
+			color: darken($textColor, 40);
+		}
+		
+		span {
+			display: block;
+			margin: auto;
+			
+			text-align: center;
+		}
+	}
+}
+
+@media screen and (min-width: $small) {
+	
+	.footer {
+		justify-content: space-around;
+		
+		&__title {
+			text-align: left;
+		}
+		
+		&__resume {
+			padding-bottom: 1em;
+			width: 50%;
+			
+			ul {
+				align-items: flex-start;
+				flex-flow: column nowrap;
+				justify-content: space-around;
+			}
+		}
+		
+		&__links {
+			align-self: center;
+			padding: 1em 0;
+			width: 30%;
+			
+			ul {
+				justify-content: center;
+				margin: 0;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: $medium) {
+	
+	.footer {
+		justify-content: center;
+		
+		&__title {
+			width: 70%;
+		}
+		
+		&__resume {
+			width: 40%;
+		}
+	}
+}

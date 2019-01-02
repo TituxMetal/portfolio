@@ -1,0 +1,154 @@
+.skills {
+	
+	figure {
+		margin: 0;
+		padding: 0;
+	}
+	
+	ul {
+		margin: 1rem auto;
+		
+		font-size: 1.6rem;
+		letter-spacing: .1rem;
+		line-height: 3.2rem;
+		
+		img {
+			display: block;
+			height: auto;
+			margin: auto;
+			max-width: 80px;
+			width: 20vw;
+		}
+	}
+	
+	.knowledge {
+		
+		li {
+			margin: auto;
+			margin-top: 2rem;
+			padding: .8rem;
+			
+			background-color: $primaryDark;
+			border-radius: 3px;
+		}
+	}
+	
+	.tech {
+		display: flex;
+		flex-flow: row wrap;
+		
+		li {
+			margin: 1rem auto;
+			width: 33%;
+			
+			figure {
+				margin: auto;
+				padding: 1rem 0;
+				width: 90%;
+				
+				background-color: $primaryDark;
+				border-radius: 3px;
+				
+				figcaption {
+					padding: 2rem 0 1rem;
+					
+					text-align: center;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: $small) {
+	
+	.skills {
+		
+		article {
+			width: auto;
+			
+			ul {
+				display: flex;
+				flex-flow: row wrap;
+				justify-content: space-around;
+				margin: 1rem auto;
+				width: auto;
+			}
+		}
+		
+		.knowledge {
+			
+			li {
+				margin: 1rem;
+			}
+		}
+		
+		.tech {
+			justify-content: center;
+			
+			li {
+				margin: 1.2rem;
+				width: 20%;
+				
+				figure {
+					padding-top: 2rem;
+					width: auto;
+					
+					img {
+						max-width: 100px;
+						width: 14vw;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: $medium) {
+	
+	.skills {
+		
+		article {
+			
+			ul {
+				width: 90%;
+			}
+		}
+		
+		.tech {
+			justify-content: space-around;
+			
+			li {
+				width: auto;
+				
+				figure {
+					padding: 2rem;
+					
+					img {
+						max-width: 115px;
+						width: 12vw;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: $desktop) {
+	
+	.skills {
+		
+		.tech {
+			
+			li {
+				
+				figure {
+					
+					img {
+						max-width: 140px;
+						width: 11vw;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,158 @@
+.contact {
+	display: flex;
+	
+	article {
+		display: block;
+		padding: 2em 1em;
+		width: 100%;
+		
+		background-color: rgba($primaryDark, .8);
+		
+		.contact__form {
+			
+			&--field {
+				height: 7.2rem;
+				padding: 1em 0 .5em 0;
+				position: relative;
+				
+				transition: height .3s;
+				
+				&::after,
+				&::before {
+					bottom: .6rem;
+					content: '';
+					display: block;
+					height: 2px;
+					left: 0;
+					position: absolute;
+					width: 100%;
+					
+					background-color: $textColor;
+				}
+				
+				&::after {
+					background-color: $secondaryLight;
+					transform: scaleX(0);
+					transition: transform .3s;
+				}
+				
+				&.is-focused::after {
+					transform: scaleX(1);
+					
+				}
+				
+				.form__field--label {
+					display: block;
+					margin: 0;
+					position: relative;
+					
+					font-size: 1em;
+					font-weight: 400;
+					line-height: 1em;
+					
+					color: lighten($primaryColor, 75);
+					transform: translateY(2.4rem);
+					transform-origin: 0 50%;
+					transition: transform .3s;
+				}
+				
+				.form__field--input,
+				.form__field--textarea {
+					display: block;
+					height: 3.2rem;
+					padding: .5em 0;
+					position: relative;
+					width: 100%;
+					
+					font-size: 1em;
+					line-height: 1.5;
+					
+					background: transparent;
+					border: none;
+					border-radius: 0;
+					color: $textColor;
+					outline: none;
+					overflow: hidden;
+					resize: none;
+					-webkit-appearance: none;
+				}
+				
+				&.has-label.contact__form--textarea {
+					height: 200px;
+					
+					transition: all .3s;
+				}
+				
+				&.has-label .form__field--textarea {
+					height: 158px;
+					
+					overflow: auto;
+					transition: all .3s;
+				}
+
+				&.is-focused .form__field--label {
+					color: $secondaryLight;
+
+				}
+				
+				&.has-label .form__field--label {
+					transform: translateY(0) scale(.75);
+				}
+			}
+			
+			&--button {
+				align-items: center;
+				display: flex;
+				justify-content: center;
+				margin: 4em auto 2em;
+				width: 100%;
+				
+				button {
+					display: block;
+					margin: 1rem auto;
+					min-width: 10%;
+					padding: 2rem 3rem;
+					width: auto;
+					
+					font-size: 1em;
+					font-weight: bold;
+					letter-spacing: .2rem;
+					text-transform: uppercase;
+					
+					background-color: transparent;
+					border: 2px solid $secondaryColor;
+					color: $textColor;
+					cursor: pointer;
+					transition: background-color .2s, border .2s, color .2s, min-width .2s;
+					
+					&:hover {
+						min-width: 100%;
+						
+						border: 2px solid $secondaryLight;
+						color: $secondaryLight;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: $medium) {
+	
+	.contact {
+	
+		article {
+			max-width: 65vmax;
+		}
+	}
+}
+
+@media screen and (min-width: $large) {
+	
+	.contact {
+	
+		article {
+			max-width: 50vmax;
+		}
+	}
+}
